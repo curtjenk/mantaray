@@ -1,0 +1,22 @@
+/* line 1, ../../tools/compass/sass/_home.scss */
+.navbar, #footer {
+  background-color: blue;
+}
+
+/* line 4, ../../tools/compass/sass/_home.scss */
+#footer {
+  margin-top: 50px;
+  text-align: center;
+  color: white;
+}
+
+/* line 10, ../../tools/compass/sass/_home.scss */
+#myCarousel .carousel-inner .item {
+  height: 400px;
+}
+/* line 13, ../../tools/compass/sass/_home.scss */
+#myCarousel .carousel-inner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

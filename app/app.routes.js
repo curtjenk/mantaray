@@ -1,23 +1,20 @@
-recipeApp.config(function($routeProvider) {
+mantarayApp.config(function($routeProvider) {
     $routeProvider.when('/', {
-        controller: 'homeController',
         templateUrl: function($routeParams) {
-          // console.log("routing to home");
+         console.log("routing to home");
             return 'app/components/home/homeView.html';
         }
     });
-    $routeProvider.when('/recipe', {
-        controller: 'recipeController',
+    $routeProvider.when('/login', {
         templateUrl: function($routeParams) {
           // console.log("routing to recipe page");
-            return 'app/components/recipe/recipeView.html';
+            return 'app/components/login/loginView.html';
         }
     });
-    $routeProvider.when('/inventory', {
-        controller: 'userInventoryController',
+    $routeProvider.when('/register', {
         templateUrl: function($routeParams) {
           // console.log("routing to userInventory page");
-            return 'app/components/userInventory/userInventoryView.html';
+            return 'app/components/register/registerView.html';
         }
     });
     $routeProvider.otherwise({

@@ -1,7 +1,7 @@
-var recipeApp = angular.module('recipeApp', ['ngRoute', 'LocalStorageModule']);
+var mantarayApp = angular.module('mantarayApp', ['ngRoute']);
 
 //"run" executes once all modules have been loaded.
-recipeApp.run( function($rootScope, $location, sharedData) {
+mantarayApp.run( function($rootScope, $location) {
 
    $rootScope.$watch(
     //This is the watch value function. It should return the value which is being watched.
@@ -18,24 +18,14 @@ recipeApp.run( function($rootScope, $location, sharedData) {
             console.log('url has changed : ' + a);
             //Put some code in here to check if they are logged in!
             //If not... send them home.
-            if (!sharedData.isLoggedIn()) {
-                console.log(' ... but the user is not logged in');
-                 $location.path('/');
-            }
         }
     });
 
 
 });
 
-recipeApp.directive('directive1', function() {
-    return {
-        controller: RightCtrl
-    };
-});
-
 //add  "check-image" (without quotes) attribute to the img element
-recipeApp.directive('checkImage', function($http) {
+mantarayApp.directive('checkImage', function($http) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {

@@ -1,50 +1,36 @@
-
-<!-- ***** ng-repeat the food content into the home page! Populating images and info about food recipes. ***** -->
-
-<div id="content-wrapper" class="container-fluid" ng-init="search(' ')">
-    <div class="row">
-
-        <div  class="col-md-12">
-            <div class="food-content col-md-4" ng-repeat="recipe in recipes" >
-                <div class="col-md-10 col-md-offset-2 food-content text-left panel panel-default card ng-cloak" >
-                <h6 class="text-left">Source: <span style="color: #8a1617;">{{recipe.sourceDisplayName}}</span></h6>
-                    <div class="food-image text-center">
-                        <a href="{{ createRecipeUrl(recipe.recipeId) }}">
-                            <img ng-src="{{ recipe.largeImageURL }}">
-                        </a>
-                    </div>
-                    <h3 style="color: #8a1617;">{{recipe.recipeName}}</h3>
-                    <div> Ready In: {{recipe.prepTime }}</div>
-                    <div>Rating: <img ng-src="{{recipe.ratingStarsImg}}"></div>
-                    <h4 style="color: #8a1617;">Ingredients</h4>
-                    <div class="ing-list" ng-repeat="ingredient in recipe.ingredients">
-                        <li>{{ingredient}}</li>
-                    </div>
-                
+<div ng-controller="homeController">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>   
+        <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="../assets/img/091111133134_andrea_manta_466.jpg" alt="Slide1">
             </div>
-
+            <div class="item">
+                <img src="../assets/img/manta-ray-120605.jpg" alt="Slide2">
+            </div>
+            <div class="item">
+                <img src="../assets/img/manta_ray2013_01.jpg" alt="Slide3">
+            </div>
+            <div class="item">
+                <img src="../assets/img/NassauBahamasBigMambo.png" alt="Slide4">
             </div>
         </div>
+        <!-- left and right Carousel controls -->
+       <!--  <a class="carousel-control left" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-control right" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a> -->
     </div>
-</div>   
-
-
-<!-- ***** Javascript function to change the height of panels based on the content filling the panels, the function will run and check what is the tallest height and change the current height. ***** -->   
-
-<script type="text/javascript">
-    
-    var currHeight = 0;
-    var tallestHeight = 0;
-
-    $('.food-content').each(function() {
-        currHeight = $(this).height();
-        if (currHeight > tallestHeight) {
-            tallestHeight = currHeight;
-        }
-    });
-    $('.food-content').height(tallestHeight);
-    
-</script>
+</div>
 
 
 
