@@ -11,18 +11,19 @@
 .navbar-default {
     background-color: $nav-foot-bg;
     // border-color: #E7E7E7;
+    padding: 0;
 }
 
 #footer {
     background-color: $nav-foot-bg;
-    // margin-top: 200px;
-    // text-align: center;
+    height: 40px;
     color: white;
+    padding-top: 5px;
 }
 
 .carousel-inner {
     .item {
-        height: 400px;
+        height: 500px;
     }
     // img {
     //     width: 100%;
@@ -41,9 +42,16 @@
     height: 100%;
 }
 
+.content {
+    width: 70%;
+    margin: auto;
+}
+
+/// makes the footer always "stick" to the bottom of the page.
 html {
     height: 100%;
     box-sizing: border-box;
+    overflow: auto;
 }
 
 *,
@@ -52,7 +60,6 @@ html {
     box-sizing: inherit;
 }
 
-/// makes the footer always "stick" to the bottom of the page.
 body {
     position: relative;
     margin: 0;
@@ -71,8 +78,8 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: .25rem;
-    // background-color: #efefef;
+    //padding: .25rem;
+    padding: 0;
     text-align: center;
 }
 // ------------- end sticky footer ---------------------

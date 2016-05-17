@@ -9,20 +9,23 @@
 /* line 11, ../../tools/compass/sass/_home.scss */
 .navbar-default {
   background-color: #0099cc;
+  padding: 0;
 }
 
-/* line 16, ../../tools/compass/sass/_home.scss */
+/* line 17, ../../tools/compass/sass/_home.scss */
 #footer {
   background-color: #0099cc;
+  height: 40px;
   color: white;
+  padding-top: 5px;
 }
 
-/* line 24, ../../tools/compass/sass/_home.scss */
+/* line 25, ../../tools/compass/sass/_home.scss */
 .carousel-inner .item {
-  height: 400px;
+  height: 500px;
 }
 
-/* line 35, ../../tools/compass/sass/_home.scss */
+/* line 36, ../../tools/compass/sass/_home.scss */
 .carousel-inner > .item > a > img,
 .carousel-inner > .item > img,
 .img-responsive, .thumbnail a > img,
@@ -32,20 +35,27 @@
   height: 100%;
 }
 
-/* line 44, ../../tools/compass/sass/_home.scss */
+/* line 45, ../../tools/compass/sass/_home.scss */
+.content {
+  width: 70%;
+  margin: auto;
+}
+
+/* line 51, ../../tools/compass/sass/_home.scss */
 html {
   height: 100%;
   box-sizing: border-box;
+  overflow: auto;
 }
 
-/* line 49, ../../tools/compass/sass/_home.scss */
+/* line 57, ../../tools/compass/sass/_home.scss */
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
 
-/* line 56, ../../tools/compass/sass/_home.scss */
+/* line 63, ../../tools/compass/sass/_home.scss */
 body {
   position: relative;
   margin: 0;
@@ -56,13 +66,13 @@ body {
 /**
  * Footer Styles
  */
-/* line 69, ../../tools/compass/sass/_home.scss */
+/* line 76, ../../tools/compass/sass/_home.scss */
 #footer {
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  padding: .25rem;
+  padding: 0;
   text-align: center;
 }
 
