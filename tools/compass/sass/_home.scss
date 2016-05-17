@@ -1,4 +1,3 @@
-
 //required per https://angular-ui.github.io/bootstrap
 .nav,
 .pagination,
@@ -6,19 +5,12 @@
 .panel-title a {
     cursor: pointer;
 }
-//-------------------------------------
 
+//-------------------------------------
 .navbar-default {
     background-color: $nav-foot-bg;
     // border-color: #E7E7E7;
     padding: 0;
-}
-
-#footer {
-    background-color: $nav-foot-bg;
-    height: 40px;
-    color: white;
-    padding-top: 5px;
 }
 
 .carousel-inner {
@@ -33,9 +25,10 @@
     // }
 }
 
-.carousel-inner>.item>a>img, 
-.carousel-inner>.item>img, 
-.img-responsive, .thumbnail a>img, 
+.carousel-inner>.item>a>img,
+.carousel-inner>.item>img,
+.img-responsive,
+.thumbnail a>img,
 .thumbnail>img {
     display: block;
     width: 100%;
@@ -68,18 +61,45 @@ body {
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -50px;
+}
+
+#footer,
+.page-wrap:after {
+    height: 50px;
+}
+
 
 /**
  * Footer Styles
  */
 
 #footer {
+    background-color: $nav-foot-bg;
+    height: 50px;
+    /* set line-height to height */
+    line-height: 50px;
+    color: white;
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     //padding: .25rem;
-    padding: 0;
+    // padding: 0;
     text-align: center;
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
 }
+
 // ------------- end sticky footer ---------------------

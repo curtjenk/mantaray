@@ -1,4 +1,4 @@
-/* line 3, ../../tools/compass/sass/_home.scss */
+/* line 2, ../../tools/compass/sass/_home.scss */
 .nav,
 .pagination,
 .carousel,
@@ -6,56 +6,49 @@
   cursor: pointer;
 }
 
-/* line 11, ../../tools/compass/sass/_home.scss */
+/* line 10, ../../tools/compass/sass/_home.scss */
 .navbar-default {
   background-color: #0099cc;
   padding: 0;
 }
 
 /* line 17, ../../tools/compass/sass/_home.scss */
-#footer {
-  background-color: #0099cc;
-  height: 40px;
-  color: white;
-  padding-top: 5px;
-}
-
-/* line 25, ../../tools/compass/sass/_home.scss */
 .carousel-inner .item {
   height: 500px;
 }
 
-/* line 36, ../../tools/compass/sass/_home.scss */
+/* line 28, ../../tools/compass/sass/_home.scss */
 .carousel-inner > .item > a > img,
 .carousel-inner > .item > img,
-.img-responsive, .thumbnail a > img,
+.img-responsive,
+.thumbnail a > img,
 .thumbnail > img {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-/* line 45, ../../tools/compass/sass/_home.scss */
+/* line 38, ../../tools/compass/sass/_home.scss */
 .content {
   width: 70%;
   margin: auto;
 }
 
-/* line 51, ../../tools/compass/sass/_home.scss */
+/* line 44, ../../tools/compass/sass/_home.scss */
 html {
   height: 100%;
   box-sizing: border-box;
   overflow: auto;
 }
 
-/* line 57, ../../tools/compass/sass/_home.scss */
+/* line 50, ../../tools/compass/sass/_home.scss */
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
 
-/* line 63, ../../tools/compass/sass/_home.scss */
+/* line 56, ../../tools/compass/sass/_home.scss */
 body {
   position: relative;
   margin: 0;
@@ -63,17 +56,46 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
+/* line 64, ../../tools/compass/sass/_home.scss */
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+/* line 69, ../../tools/compass/sass/_home.scss */
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -50px;
+}
+
+/* line 75, ../../tools/compass/sass/_home.scss */
+#footer,
+.page-wrap:after {
+  height: 50px;
+}
+
 /**
  * Footer Styles
  */
-/* line 76, ../../tools/compass/sass/_home.scss */
+/* line 85, ../../tools/compass/sass/_home.scss */
 #footer {
+  background-color: #0099cc;
+  height: 50px;
+  /* set line-height to height */
+  line-height: 50px;
+  color: white;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 0;
   text-align: center;
+}
+/* line 98, ../../tools/compass/sass/_home.scss */
+#footer span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }
 
 /* line 12, ../../tools/compass/sass/style.scss */
@@ -107,4 +129,5 @@ body {
 .button-holder {
   text-align: center;
   margin-top: 20px;
+  margin-bottom: 15px;
 }
