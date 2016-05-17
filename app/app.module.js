@@ -1,4 +1,4 @@
-var mantarayApp = angular.module('mantarayApp', ['ngRoute']);
+var mantarayApp = angular.module('mantarayApp', ['ngRoute', 'ngCookies', 'ui.bootstrap']);
 
 //"run" executes once all modules have been loaded.
 mantarayApp.run( function($rootScope, $location) {

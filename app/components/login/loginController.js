@@ -1,8 +1,5 @@
 mantarayApp.controller("loginController", function($scope, $http) {
-
-   $scope.$emit('enteredLoginView', {});
+    $scope.errorMessage = "";
+    $scope.$emit('enteredLoginView', {});
 
 });
-
-
-

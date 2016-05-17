@@ -1,30 +1,27 @@
- <div class="container-fluid login" ng-controller="loginController">
-      <div class="row">
+<div class="container-fluid login-wrapper" ng-controller="loginController">
+    <div class="row nav-pad-top">
         <div class="col-sm-6 col-sm-offset-3 text-center">
-          <h1>Login</h1>
-          <h4>Enter your username and password</h4>
+            <h1>Login</h1>
         </div>
-      </div>
-      <div class="row">
-        <h5 class="pwd-error text-center">{{loginMessage}}</h5>
     </div>
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 login-wrapper text-center">
-          <form role="form" ng-submit="loginFunc()" id="login-form" name="login">
+    <div class="row">
+        <div class="error-error text-center">
+            {{errorMessage}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 grey-box">
             <div class="form-group">
-              <label>Username</label>
-              <input type="text" ng-model="loginUsername" placeholder="John Smith" minlength="5" class="form-control">
+                <label>Username</label>
+                <input type="text" ng-model="loginUsername" placeholder="John Smith" minlength="5" class="form-control">
             </div>
             <div class="form-group">
-              <label>Password</label>
-              <input type="password" ng-model="loginPassword" placeholder="6 character min" minlength="6" class="form-control">
+                <label>Password</label>
+                <input type="password" ng-model="loginPassword" placeholder="6 character min" minlength="6" class="form-control">
             </div>
             <div class="button-holder">
-              <a href="#/" class="btn btn-success">Cancel</a>
-              <button type="submit" class="btn btn-success">Login</button>
+                <button type="submit" ng-click="loginFunc()" class="btn btn-success">Login</button>
             </div>
-          </form>
         </div>
-      </div>
     </div>
-
+</div>

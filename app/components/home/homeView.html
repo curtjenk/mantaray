@@ -1,13 +1,13 @@
-<div ng-controller="homeController">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Carousel indicators -->
+<div class="home-wrapper" ng-controller="homeController">
+    <!--  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
             <li data-target="#myCarousel" data-slide-to="3"></li>
-        </ol>   
-        <!-- Wrapper for carousel items -->
+        </ol>
+      
         <div class="carousel-inner">
             <div class="item active">
                 <img src="../assets/img/091111133134_andrea_manta_466.jpg" alt="Slide1">
@@ -22,15 +22,44 @@
                 <img src="../assets/img/NassauBahamasBigMambo.png" alt="Slide4">
             </div>
         </div>
-        <!-- left and right Carousel controls -->
-       <!--  <a class="carousel-control left" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="carousel-control right" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a> -->
+    </div>
+    <a href="#myCarousel" class="left carousel-control" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a href="#myCarousel" class="right carousel-control" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div> -->
+    <div class="my-carousel">
+        <uib-carousel active="1" interval="5000" no-wrap="false">
+            <uib-slide index="0">
+                <img src="../assets/img/091111133134_andrea_manta_466.jpg">
+                <!-- <div class="carousel-caption">
+                <h4>Slide {{slide.id}}</h4>
+                <p>{{slide.text}}</p>
+            </div> -->
+            </uib-slide>
+            <uib-slide index="1">
+                <img src="../assets/img/manta-ray-120605.jpg">
+                <!-- <div class="carousel-caption">
+                <h4>Slide {{slide.id}}</h4>
+                <p>{{slide.text}}</p>
+            </div> -->
+            </uib-slide>
+            <uib-slide index="2">
+                <img src="../assets/img/manta_ray2013_01.jpg">
+                <!-- <div class="carousel-caption">
+                <h4>Slide {{slide.id}}</h4>
+                <p>{{slide.text}}</p>
+            </div> -->
+            </uib-slide>
+            <uib-slide index="3">
+                <img src="../assets/img/NassauBahamasBigMambo.png">
+                <!-- <div class="carousel-caption">
+                <h4>Slide {{slide.id}}</h4>
+                <p>{{slide.text}}</p>
+            </div> -->
+            </uib-slide>
+        </uib-carousel>
     </div>
 </div>
-
-
-

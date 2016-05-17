@@ -1,1 +1,36 @@
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+$error-color: red;
+$box-color:  #d1d1e0;
+// $nav-foot-bg: #0099cc;
+$nav-foot-bg: rgb(0, 153, 204);
+
 @import "home";
+@import "login";
+@import "register";
+
+.grey-box {
+  margin-top: 10px;
+  background-color: $box-color;
+  width: 50%;
+}
+.nav-pad-top {
+  padding-top: 55px;
+}
+
+.error-text {
+  color: $error-color;
+}
+
+.form-group {
+  width: 80%;
+  margin: auto;
+  label {
+    margin-top: 10px;
+  }
+}
+
+.button-holder {
+  text-align: center;
+  margin-top: 20px;
+}

@@ -1,9 +1,10 @@
 mantarayApp.controller("homeController", function($scope, $http) {
+    
 
     $scope.$on('enteredLoginView', function(event, args) {
-       console.log("enteredLoginView");
+        console.log("enteredLoginView");
     })
- 
+
     $scope.$on("userLoggedIn", function(event, args) {
         //  console.log("userLoggedIn event ");
         //  console.log(event);
@@ -11,7 +12,7 @@ mantarayApp.controller("homeController", function($scope, $http) {
         $scope.loggedIn = true;
         $scope.username = args.username;
     });
- 
+
     $scope.$on("userLoggedOut", function(event, args) {
         // alert("logged out");
         $scope.loggedIn = false;
