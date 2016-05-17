@@ -4,19 +4,16 @@ mantarayApp.factory('dbAjax', function($http) {
     var dbAjax = {};
     var dbCreateUrl = "assets/includes/db_create.php";
     var dbReadUrl = "assets/includes/db_read.php";
-    var dbLoginUrl = "assets/includes/db_read.php";
+    var dbLoginUrl = "assets/includes/db_readForLogin.php";
     var dbUpdateUrl = "assets/includes/db_update.php";
     var dbDeleteUrl = "assets/includes/db_delete.php";
 
-    dbAjax.login = function(username, password) {
+    dbAjax.login = function(data) {
         console.log("dbAjax read");
-        var postData = {};
-        postData.username = username;
-        postData.password = password;
         return $http({
             method: "post",
-            url: dbReadUrl,
-            data: postData,
+            url: dbLoginUrl,
+            data: data,
             dataType: 'json'
         });
     }

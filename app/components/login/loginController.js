@@ -6,7 +6,7 @@ mantarayApp.controller("loginController", function($scope, $http, dbAjax) {
             console.log("login called");
             
 
-            dbAjax.read('user', {
+            dbAjax.login({
                     username: $scope.loginUsername,
                     password: $scope.loginPassword
                 })
