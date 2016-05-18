@@ -11,34 +11,49 @@
     </div>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3 grey-box">
-            <form data-toggle="validator" role="form" id="new-form" name="new-book-mark" data-disable="true">
-                <div class="form-group">
+            <form role="form" name="registerForm" ng-submit="registerFunc()" novalidate>
+                <div class="form-group" ng-class="{ 'has-error': registerForm.regName.$touched && registerForm.regName.$invalid }">
                     <label>Full Name</label>
-                    <input type="text" required ng-model="regName" placeholder="John Smith" minlength="5" class="form-control">
-                    <div class="help-block with-errors"></div>
+                    <input type="text" name="regName" required multiple ng-model="regName" placeholder="John Smith" ng-minlength="5" class="form-control">
+                    <div ng-messages="registerForm.regName.$error" ng-if="registerForm.regName.$touched" role="alert">
+                        <p ng-message="required">Full Name is required.</p>
+                        <p ng-message="minlength">Full Name is too short.</p>
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': registerForm.regUsername.$touched && registerForm.regUsername.$invalid }">
                     <label>Username</label>
-                    <input type="text" required ng-model="regUsername" placeholder="JSmith" minlength="5" class="form-control">
-                    <div class="help-block with-errors"></div>
+                    <input type="text" name="regUsername" required multiple ng-model="regUsername" placeholder="JSmith" ng-minlength="5" class="form-control">
+                    <div ng-messages="registerForm.regUsername.$error" ng-if="registerForm.regUsername.$touched" role="alert">
+                        <p ng-message="required">Username is required.</p>
+                        <p ng-message="minlength">Username is too short.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Password</label>
-                    <input type="password" required id="inputPassword" ng-model="regPassword" placeholder="6 character min" data-minlength="6" class="form-control">
-                    <div class="help-block with-errors">Minimum 6 characters</div>
+                <div class="form-group" ng-class="{ 'has-error': registerForm.regPassword.$touched && registerForm.regPassword.$invalid }">
+                    <label>Password</label>
+                    <input type="password" name="regPassword" required multiple ng-model="regPassword" placeholder="6 character min" ng-minlength="6" class="form-control">
+                    <div ng-messages="registerForm.regPassword.$error" ng-if="registerForm.regPassword.$touched" role="alert">
+                        <p ng-message="required">Password is required.</p>
+                        <p ng-message="minlength">Password is too short.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="password" required data-match="#inputPassword" ng-model="regPassword2" placeholder="confirm password" data-minlength="6" class="form-control" data-error="dont match">
-                    <div class="help-block with-errors"></div>
+                <div class="form-group" ng-class="{ 'has-error': registerForm.regPassword2.$touched && registerForm.regPassword2.$invalid }">
+                    <label>Confirm Password</label>
+                    <input compare-to="regPassword" type="password" name="regPassword2" required multiple ng-model="regPassword2" placeholder="confirm password" ng-minlength="6" class="form-control">
+                    <div ng-messages="registerForm.regPassword2.$error" ng-if="registerForm.regPassword2.$touched" role="alert">
+                        <p ng-message="required">Password Confirmation is required.</p>
+                        <p ng-message="compareTo">Password Confirmation must match Password</p>
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error': registerForm.regEmail.$touched && registerForm.regEmail.$invalid }">
                     <label>Email</label>
-                    <input type="email" required ng-model="regEmail" placeholder="example@example.com" class="form-control" data-error="Doesn't look like an email address">
-                    <div class="help-block with-errors"></div>
+                    <input type="email" name="regEmail" required multiple ng-model="regEmail" placeholder="example@example.com" class="form-control">
+                    <div ng-messages="registerForm.regEmail.$error" ng-if="registerForm.regEmail.$touched" role="alert">
+                        <p ng-message="required">Email is required.</p>
+                        <p ng-message="email">This needs to be a valid email</p>
+                    </div>
                 </div>
                 <div class="button-holder">
-                    <input type="submit" class="btn btn-success submit-button" ng-click="registerFunc()" value="Register"></button>
-                    <!-- <button type="submit" class="btn btn-success" ng-click="registerFunc()">Register</button> -->
+                    <button type="submit" class="btn btn-success">Register</button>
                 </div>
             </form>
         </div>

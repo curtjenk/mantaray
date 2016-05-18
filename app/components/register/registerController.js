@@ -3,6 +3,9 @@ mantarayApp.controller('registerController', function($scope, $cookies, dbAjax) 
 
     $scope.registerFunc = function() {
             console.log("registerfunc called");
+            if (!$scope.registerForm.$valid) { //check for a valid form.
+                return
+            }
             if (!($scope.regPassword && $scope.regPassword === $scope.regPassword2)) {
                 $scope.errorMessage = "Passwords must match";
                 return;

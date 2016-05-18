@@ -11,17 +11,26 @@
     </div>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3 grey-box">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" ng-model="loginUsername" placeholder="John Smith" minlength="5" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" ng-model="loginPassword" placeholder="6 character min" minlength="6" class="form-control">
-            </div>
-            <div class="button-holder">
-                <button type="submit" ng-click="loginFunc()" class="btn btn-success">Login</button>
-            </div>
+            <form role="form" name="loginForm" ng-submit="loginFunc()" novalidate>
+                <div class="form-group" ng-class="{ 'has-error': loginForm.loginUsername.$touched && loginForm.loginUsername.$invalid }">
+                    <label>Username</label>
+                    <input type="text" name="loginUsername" ng-model="loginUsername" placeholder="John Smith" ng-minlength="5" required multiple class="form-control">
+                    <div ng-messages="loginForm.loginUsername.$error" ng-if="loginForm.loginUsername.$touched" role="alert">
+                        <p ng-message="required">Username is required.</p>
+                        <p ng-message="minlength">Username is too short.</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': loginForm.loginPassword.$touched && loginForm.loginPassword.$invalid }">
+                    <label>Password</label>
+                    <input type="password" name="loginPassword" ng-model="loginPassword" placeholder="6 character min" minlength="6" required class="form-control">
+                    <div ng-messages="loginForm.loginPassword.$error" ng-if="loginForm.loginPassword.$touched" role="alert">
+                        <p ng-message="required">Your Password is required.</p>
+                    </div>
+                </div>
+                <div class="form-group button-holder">
+                    <button type="submit" class="btn btn-success">Login</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

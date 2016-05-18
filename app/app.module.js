@@ -1,4 +1,4 @@
-var mantarayApp = angular.module('mantarayApp', ['ngRoute', 'ngCookies', 'ui.bootstrap']);
+var mantarayApp = angular.module('mantarayApp', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'ngMessages']);
 
 //"run" executes once all modules have been loaded.
 mantarayApp.run( function($rootScope, $location) {
@@ -23,6 +23,33 @@ mantarayApp.run( function($rootScope, $location) {
 
 
 });
+
+/* Add a method to the ngModel controller’s $validators object. Angular will 
+ invoke the function when the model value changes. The function returns a 
+ boolean, and a return value of false will set the corresponding ngModel’s 
+ $error property automatically.
+ Use this in validating password matches password2.  Check registerView.html
+*/
+mantarayApp.directive("compareTo", function() {
+    return {
+        require: "ngModel",
+        scope: {
+            otherModelValue: "=compareTo"
+        },
+        link: function(scope, element, attributes, ngModel) {
+
+            ngModel.$validators.compareTo = function(modelValue) {
+                return modelValue == scope.otherModelValue;
+            };
+
+            scope.$watch("otherModelValue", function() {
+                ngModel.$validate();
+            });
+        }
+    };
+});
+
+
 
 //add  "check-image" (without quotes) attribute to the img element
 mantarayApp.directive('checkImage', function($http) {
