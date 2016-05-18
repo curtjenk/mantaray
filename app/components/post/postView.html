@@ -1,14 +1,14 @@
-<div class="container-fluid login-wrapper" ng-controller="postController">
+<div class="container-fluid post-wrapper" ng-controller="postController">
     <div class="row nav-pad-top">
-        <div class="col-sm-6 col-sm-offset-3 text-center">
-            <h1>Post a new message</h1>
+        <div class="col-sm-6 col-sm-offset-2">
+            <h3>Post a new message</h3>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3 grey-box">
             <form role="form" name="postForm" ng-submit="postFunc()" novalidate>
                 <div ng-hide="loggedIn" class="text-center">
-                    <h3>You Must Be Logged In to Post a Message</h3>
+                    <h5>You Must Be Logged In to Post a Message</h5>
                 </div>
                 <div ng-show="loggedIn">
                     <div class="form-group" ng-class="{ 'has-error': postForm.loginUsername.$touched && postForm.post.$invalid }">
@@ -25,4 +25,67 @@
             </form>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-2">
+            <h3>Recent Posts</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 grey-box">
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                        <input type="text" class="form-control" placeholder="Search Posts" ng-model="searchBM">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 grey-box">
+            <div id="page-controls" class="text-center">
+                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                </dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 grey-box">
+            <div id="sort-btns" class="text-center">
+                <div class="col-sm-4">
+                    <a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">Sort by Username 
+                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="" ng-click="sortType = 'date'; sortReverse = !sortReverse">Sort by Date
+                        <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div id="recent-posts">
+                <div dir-paginate="post in posts | orderBy:orderByFunction:sortReverse | filter:searchBM |itemsPerPage:5">
+                    <div class="row grey-box-no-width">
+                        <div class="col-sm-11">
+                            <p>{{post.text}}</p>
+                            <p>Posted: {{post.create_date}} by {{post.username}}</p> 
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="arrows">
+                                <span class="glyphicon glyphicon-thumbs-up up-vote vote"></span>
+                                <p class="numVotes">1</p>
+                                <span class="glyphicon glyphicon-thumbs-down down-vote vote"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

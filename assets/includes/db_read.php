@@ -2,8 +2,8 @@
  require_once('db_connect.php');
  
   // file_get_contents is needed for POST requests data
-  if ( !empty($_POST) ) {
-      $post_data = file_get_contents("php://input");
+ $post_data = file_get_contents("php://input");
+  if ( !empty($post_data) ) {
       $json_input = json_decode($post_data, TRUE);
       $resp = [];
       $resp = select($json_input);
