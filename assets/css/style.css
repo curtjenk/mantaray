@@ -109,53 +109,61 @@ body {
   margin-right: 10px;
 }
 
-/* line 2, ../../tools/compass/sass/_post.scss */
+/* line 1, ../../tools/compass/sass/_post.scss */
+.post-wrapper {
+  font-family: 'Josefin Sans', sans-serif;
+}
+/* line 3, ../../tools/compass/sass/_post.scss */
 .post-wrapper h3, .post-wrapper h5 {
   margin-left: 65px;
 }
 
-/* line 7, ../../tools/compass/sass/_post.scss */
+/* line 8, ../../tools/compass/sass/_post.scss */
 .grey-box-no-width {
   margin-top: 10px;
   padding-top: 5px;
-  padding-bottom: 5px;
-  background-color: #d1d1e0;
-  font-size: 20px;
+  background-color: #E6E6E6;
+  font-size: 14px;
 }
 
-/* line 15, ../../tools/compass/sass/_post.scss */
+/* line 16, ../../tools/compass/sass/_post.scss */
 .arrows {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 /* line 13, ../../tools/compass/sass/style.scss */
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* line 17, ../../tools/compass/sass/style.scss */
 .grey-box {
   margin-top: 10px;
-  background-color: #d1d1e0;
+  background-color: #E6E6E6;
   width: 50%;
 }
 
-/* line 18, ../../tools/compass/sass/style.scss */
+/* line 22, ../../tools/compass/sass/style.scss */
 .nav-pad-top {
   padding-top: 55px;
 }
 
-/* line 22, ../../tools/compass/sass/style.scss */
+/* line 26, ../../tools/compass/sass/style.scss */
 .error-text {
   color: red;
 }
 
-/* line 26, ../../tools/compass/sass/style.scss */
+/* line 30, ../../tools/compass/sass/style.scss */
 .form-group {
   width: 80%;
   margin: auto;
 }
-/* line 29, ../../tools/compass/sass/style.scss */
+/* line 33, ../../tools/compass/sass/style.scss */
 .form-group label {
   margin-top: 10px;
 }
 
-/* line 34, ../../tools/compass/sass/style.scss */
+/* line 38, ../../tools/compass/sass/style.scss */
 .button-holder {
   text-align: center;
   margin-top: 20px;

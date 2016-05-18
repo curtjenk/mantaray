@@ -1,7 +1,7 @@
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
 $error-color: red;
-$box-color:  #d1d1e0;
+$box-color:  #E6E6E6;
 // $nav-foot-bg: #0099cc;
 $nav-foot-bg: rgb(0, 153, 204);
 
@@ -9,6 +9,10 @@ $nav-foot-bg: rgb(0, 153, 204);
 @import "login";
 @import "register";
 @import "post";
+
+body {
+   font-family: 'Josefin Sans', sans-serif;
+}
 
 .grey-box {
   margin-top: 10px;

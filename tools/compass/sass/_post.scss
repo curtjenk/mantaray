@@ -1,4 +1,5 @@
 .post-wrapper {
+  font-family: 'Josefin Sans', sans-serif;
   h3, h5 {
     margin-left: 65px;
   }
@@ -7,13 +8,13 @@
 .grey-box-no-width {
     margin-top: 10px;
     padding-top: 5px;
-    padding-bottom: 5px;
+    // padding-bottom: 5px;
     background-color: $box-color;
-    font-size: 20px;
+    font-size: 14px;
 }
 
 .arrows {
-    font-size: 24px;
+    font-size: 22px;
 }
 
 
