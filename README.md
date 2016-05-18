@@ -13,10 +13,10 @@ The app has the following features
 
 Mantaray uses a number of open source projects to work properly:
 
-* [AngularJS] - HTML enhanced for web apps!
+* [AngularJS] - MVC framework
 * [Bootstrap] - layout, etc.
-* [Bootstrap Validator] - form validation.
 * [Angular-UI-Bootstrap] - image carousel
+* [Angular Messages] - form validation
 * [Apache] - webserver
 * [jQuery] - duh
 * [MySQL] - relational database
@@ -51,4 +51,4 @@ MIT
    [AngularJS]: <http://angularjs.org>
    [jQuery]: <http://jquery.com>
    [Angular-UI-Bootstrap]: <https://angular-ui.github.io/bootstrap/>
-   [Bootstrap Validator]: <https://github.com/1000hz/bootstrap-validator>
+   [Angular-Messages]: <>
