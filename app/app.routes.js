@@ -20,6 +20,11 @@ mantarayApp.config(function($routeProvider) {
             return 'app/components/register/registerView.html';
         }
     });
+    $routeProvider.when('/post', {
+        templateUrl: function($routeParams) {
+            return 'app/components/post/postView.html';
+        }
+    });
     $routeProvider.otherwise({
         redirectTo: '/'
     });

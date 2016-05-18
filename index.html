@@ -10,13 +10,15 @@
     <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-    <!--   <script src="node_modules/bootstrap-validator/dist/validator.min.js"></script> -->
+      <!-- <script src="node_modules/bootstrap-validator/dist/validator.min.js"></script> -->
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
     <script type="text/javascript" src="app/app.module.js"></script>
     <script type="text/javascript" src="app/app.routes.js"></script>
     <script type="text/javascript" src="app/components/home/homeController.js"></script>
     <script type="text/javascript" src="app/components/login/loginController.js"></script>
+    <script type="text/javascript" src="app/components/logout/logoutController.js"></script>
     <script type="text/javascript" src="app/components/register/registerController.js"></script>
+    <script type="text/javascript" src="app/components/post/postController.js"></script>
     <script type="text/javascript" src="app/shared/factory.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
@@ -62,12 +64,15 @@
                             </a>
                         </li>
                     </ul>
-                
                     <ul ng-show="loggedIn" class="welcome">
                         <li><span>Welcome back {{username}}</span></li>
                     </ul>
-
                     <ul ng-show="loggedIn" class="nav navbar-nav navbar-right">
+                        <li>
+                            <a ng-href="#/post">
+                                <button class="btn btn-primary">Post</button>
+                            </a>
+                        </li>
                         <li>
                             <a ng-href="#/logout">
                                 <button class="btn btn-primary">Log Out</button>
@@ -84,9 +89,9 @@
             <span>
                 Will you help us save the manta rays?
             </span>
-                        <i class="fa fa-credit-card"></i><a href=""><span style="color: darkblue;">&nbsp;Donate</span></a>
-                    </div>
-                </div>
+            <i class="fa fa-credit-card"></i><a href=""><span style="color: darkblue;">&nbsp;Donate</span></a>
+        </div>
+    </div>
 </body>
 
 </html>

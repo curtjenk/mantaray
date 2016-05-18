@@ -1,4 +1,7 @@
-mantarayApp.controller("logoutController", function($scope, $http, dbAjax, $cookies, $location) {
-
+mantarayApp.controller("logoutController", function($rootScope, $scope, $http, dbAjax, $cookies, $location) {
+    $rootScope.isLoggedIn = false;
+     $scope.$emit("userLoggedOut", {
+                    username: $scope.loginUsername
+                });
 
 });

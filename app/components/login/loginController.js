@@ -1,15 +1,18 @@
-mantarayApp.controller("loginController", function($scope, $http, dbAjax, $cookies, $location) {
+mantarayApp.controller("loginController", function($rootScope, $scope, $http, dbAjax, $cookies, $location) {
+
 
     $scope.errorMessage = "";
     $scope.$emit('enteredLoginView', {});
 
     $scope.loginFunc = function() {
-        $cookies.remove("token");
-        $cookies.remove("username");
-        console.log("login called");
+
+        $rootScope.username = "";
+        $rootScope.isLoggedIn = false;
+
         console.log($scope.loginForm.$valid);
 
         if (!$scope.loginForm.$valid) {
+            console.log("loginForm is invalid");
             return;
         }
 
@@ -19,8 +22,9 @@ mantarayApp.controller("loginController", function($scope, $http, dbAjax, $cooki
         }).then(
             function(success) {
                 console.log(success);
-                $cookies.put("token", "blah");
-                $cookies.put("username", $scope.loginUsername);
+
+                $rootScope.username = $scope.loginUsername;
+                $rootScope.isLoggedIn = true;
                 $scope.$emit("userLoggedIn", {
                     username: $scope.loginUsername
                 });

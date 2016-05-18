@@ -45,10 +45,10 @@ mantarayApp.factory('dbAjax', function($http) {
             dataType: 'json'
         });
     }
-    dbAjax.createTweet = function(data) {
+    dbAjax.createPost = function(data) {
         console.log("dbAjax create Tweet");
         var postData = data;
-        postData.func = 'create_tweet';
+        postData.func = 'create_post';
         console.log(postData);
         return $http({
             method: "post",

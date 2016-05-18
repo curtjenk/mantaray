@@ -1,5 +1,6 @@
 <?php
   require_once('db_connect.php');
+  require_once('db_read.php');
   
   // file_get_contents is needed for POST requests data
   // plus json_decode since I'm posting json_format
@@ -12,10 +13,41 @@
   if ($func = 'create_user') {
       $resp = createUser($json_input);
   }
-  
+  if ($func = 'create_post') {
+      $resp = createPost($json_input);
+  }
+
   $resp['echo'] = $json_input;
   echo json_encode($resp);
 
+function createPost ($input) {
+    $resp = [];
+    $resp['status'] = 'success';
+
+    $text = $input['postText'];
+    $username = $input['username'];
+      
+      try {
+        DB::insert('post', array(
+          'username' => $username,
+          'text' => $text
+        ));
+
+        if ($input['returnAll']) {
+          $input = [];
+          $input['table'] = 'post';
+          $resp['returnAll'] = select($input);
+        }
+      } catch (MeekroDBException $e) {
+        $resp['status'] = 'fail';
+        $resp['failType'] = 'db';
+        $resp['message'] = $e->getMessage();
+        $resp['query'] = $e->getQuery();
+      }
+   
+
+    return $resp;
+  }
 
   function createUser ($input) {
     $resp = [];
