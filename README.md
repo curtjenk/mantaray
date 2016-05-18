@@ -21,6 +21,7 @@ Mantaray uses a number of open source projects to work properly:
 * [jQuery] - duh
 * [MySQL] - relational database
 * [MeekroDB] - PHP MySQL library
+* [Font Awesome] - Icons
 
 
 ### Installation
@@ -52,3 +53,4 @@ MIT
    [jQuery]: <http://jquery.com>
    [Angular-UI-Bootstrap]: <https://angular-ui.github.io/bootstrap/>
    [Angular-Messages]: <>
+   [Font Awesome]: <http://fontawesome.io>

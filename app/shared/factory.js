@@ -1,3 +1,7 @@
+function upFirstChar(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 //factory for managing local storage
 //Note to self:  ALL FUCTIONS SHOULD RETURN A PROMISE
 mantarayApp.factory('dbAjax', function($http) {
