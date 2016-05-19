@@ -6,21 +6,50 @@
   $post_data = file_get_contents("php://input");
   $json_input = json_decode($post_data, TRUE);
   $resp = [];
- 
+
   $func = $json_input['func'];
 
   if ($func == 'create_user') {
       $resp = createUser($json_input);
-  } else 
+  } else
   if ($func == 'create_post') {
       $resp = createPost($json_input);
   } else
   if ($func == 'create_vote') {
       $resp = createVote($json_input);
+  } else
+  if ($func == 'create_follower') {
+      $resp = createFollower($json_input);
   }
 
   //$resp['echo'] = $json_input;
   echo json_encode($resp, JSON_NUMERIC_CHECK);
+
+  function createFollower ($input) {
+      $resp = [];
+      $resp['status'] = 'success';
+      $resp['echo'] = $input;
+
+      $text = $input['postText'];
+      $username_poster = $input['username_poster'];
+      $username_follower = $input['username_follower'];
+      $postId = $input['postId'];
+
+      try {
+          DB::insert('follower', array(
+            'postId' => $postId,
+            'username_follower' => $username_follower,
+            'username_poster' => $username_poster
+          ));
+      } catch (MeekroDBException $e) {
+          $resp['status'] = 'fail';
+          $resp['failType'] = 'db';
+          $resp['message'] = $e->getMessage();
+          $resp['query'] = $e->getQuery();
+      }
+
+      return $resp;
+  }
 
 function createVote ($input) {
     $resp = [];
@@ -31,14 +60,14 @@ function createVote ($input) {
     $username = $input['username'];
     $postId = $input['postId'];
     $direction = $input['direction'];
-      
+
       try {
         DB::insert('vote', array(
           'username' => $username,
           'postId' => $postId,
           'direction' => $direction
         ));
-    
+
         $dbResults = DB::query("SELECT SUM(direction) AS voteTotal FROM vote WHERE postId = %i", $postId);
         $resp['voteTotal'] = $dbResults[0]['voteTotal'];
 
@@ -48,7 +77,7 @@ function createVote ($input) {
         $resp['message'] = $e->getMessage();
         $resp['query'] = $e->getQuery();
       }
-   
+
 
     return $resp;
 }
@@ -59,7 +88,7 @@ function createPost ($input) {
 
     $text = $input['postText'];
     $username = $input['username'];
-      
+
       try {
         DB::insert('post', array(
           'username' => $username,
@@ -76,7 +105,7 @@ function createPost ($input) {
         $resp['message'] = $e->getMessage();
         $resp['query'] = $e->getQuery();
       }
-   
+
 
     return $resp;
   }
@@ -114,8 +143,5 @@ function createPost ($input) {
 
     return $resp;
   }
-
-
- 
 
 ?>

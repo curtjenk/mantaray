@@ -1,7 +1,7 @@
 mantarayApp.config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: function($routeParams) {
-           // console.log("routing to home");
+           console.log("routing to home");
             return 'app/components/home/homeView.html';
         }
     });
@@ -23,6 +23,11 @@ mantarayApp.config(function($routeProvider) {
     $routeProvider.when('/post', {
         templateUrl: function($routeParams) {
             return 'app/components/post/postView.html';
+        }
+    });
+    $routeProvider.when('/follow', {
+        templateUrl: function($routeParams) {
+            return 'app/components/follow/followView.html';
         }
     });
     $routeProvider.otherwise({

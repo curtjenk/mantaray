@@ -2,13 +2,13 @@
  require_once('db_connect.php');
 
  function selectPostsAndVotes() {
-    $resp = [];   
-    
+    $resp = [];
+
     try {
       $query = "SELECT post.*, COALESCE(SUM(vote.direction),0) as voteTotal ";
       $query = $query . " FROM post LEFT JOIN vote ON post.id = vote.postId ";
       $query = $query . "   GROUP BY post.id ORDER BY post.create_date DESC";
-      
+
       $resp['rows'] = DB::query($query);
       $resp['query'] = $query;
       $resp['status'] = 'success';
@@ -23,7 +23,8 @@
  }
 
  function select($input) {
-    $resp = [];   
+    $resp = [];
+    $resp['echo'] = $input;
     $predicate = "";
     if (!empty($input['where'])) {
       foreach($input['where'] as $key => $val) {
@@ -33,7 +34,11 @@
         if ($key == 'password') {
             continue;
         } else {
-            $predicate = $predicate . " " . $key . "='" . $val . "'";
+             if (is_numeric($val)) {
+                $predicate = $predicate . " " . $key . "'" . $val . "'"; 
+             } else {
+               $predicate = $predicate . " " . $key . "'" . $val . "'";  //key will also contain the operator like "=", "<", ">"
+            }
         }
       }
     }
@@ -56,7 +61,7 @@
     return $resp;
   }
 
-  
+
 	function getUserIP()
 	{
     	$client  = @$_SERVER['HTTP_CLIENT_IP'];
@@ -78,10 +83,5 @@
 
   	  return $ip;
 	}
-  
+
 ?>
-
-
-
-
-

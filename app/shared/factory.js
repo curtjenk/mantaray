@@ -33,30 +33,7 @@ mantarayApp.factory('dbAjax', function($http) {
             data: postData,
             dataType: 'json'
         });
-    }
-
-    // dbAjax.readPostAndVote = function() {
-    //     console.log("dbAjax read posts and votes");
-    //     var postData = {};
-    //     postData.table = 'postAndVote';
-    //     return $http({
-    //         method: "post",
-    //         url: dbReadUrl,
-    //         data: postData,
-    //         dataType: 'json'
-    //     });
-    // }
-
-    // dbAjax.update = function(data) {
-    //     console.log("dbAjax update");
-    //     var postData = data;
-    //     return $http({
-    //         method: "post",
-    //         url: dbUpdateUrl,
-    //         data: postData,
-    //         dataType: 'json'
-    //     });
-    // }
+    };
 
     dbAjax.createUser = function(data) {
         console.log("dbAjax create User");
@@ -69,7 +46,8 @@ mantarayApp.factory('dbAjax', function($http) {
             data: postData,
             dataType: 'json'
         });
-    }
+    };
+
     dbAjax.createPost = function(data) {
         console.log("dbAjax create Tweet");
         var postData = data;
@@ -81,27 +59,41 @@ mantarayApp.factory('dbAjax', function($http) {
             data: postData,
             dataType: 'json'
         });
-    }
+    };
+
     dbAjax.createVote = function(data) {
         console.log("dbAjax create Vote");
         var postData = data;
         postData.func = 'create_vote';
-        console.log(postData);
+        // console.log(postData);
         return $http({
             method: "post",
             url: dbCreateUrl,
             data: postData,
             dataType: 'json'
         });
-    }
-    dbAjax.readUser = function(token) {
+    };
+    dbAjax.createFollower = function(data) {
+        console.log("dbAjax create follower");
+        var postData = data;
+        postData.func = 'create_follower';
+        // console.log(postData);
         return $http({
             method: "post",
             url: dbCreateUrl,
-            data: { token: token },
+            data: postData,
             dataType: 'json'
         });
-    }
+    };
+
+    // dbAjax.readUser = function(token) {
+    //     return $http({
+    //         method: "post",
+    //         url: dbCreateUrl,
+    //         data: { token: token },
+    //         dataType: 'json'
+    //     });
+    // }
 
     return dbAjax;
 

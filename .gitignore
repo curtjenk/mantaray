@@ -1,3 +1,4 @@
 node_modules/*
 tools/.sass-cache
 assets/includes/db_connect.php
+app/components/follow/follow_notes.txt
