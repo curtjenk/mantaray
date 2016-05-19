@@ -1,6 +1,27 @@
 <?php
  require_once('db_connect.php');
 
+ function selectPostsAndVotes() {
+    $resp = [];   
+    
+    try {
+      $query = "SELECT post.*, COALESCE(SUM(vote.direction),0) as voteTotal ";
+      $query = $query . " FROM post LEFT JOIN vote ON post.id = vote.postId ";
+      $query = $query . "   GROUP BY post.id ORDER BY post.create_date DESC";
+      
+      $resp['rows'] = DB::query($query);
+      $resp['query'] = $query;
+      $resp['status'] = 'success';
+    } catch (MeekroDBException $e) {
+      $resp['status'] = 'fail';
+      $resp['failType'] = 'db';
+      $resp['message'] = $e->getMessage();
+      $resp['query'] = $e->getQuery();
+    }
+
+    return $resp;
+ }
+
  function select($input) {
     $resp = [];   
     $predicate = "";

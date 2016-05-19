@@ -8,7 +8,7 @@
         <div class="col-sm-8 col-sm-offset-2 grey-box-no-width">
             <form role="form" name="postForm" ng-submit="postFunc()" novalidate>
                 <div ng-hide="loggedIn" class="text-center">
-                    <h5>You Must Be Logged In to Post a Message</h5>
+                    <h5>You Must Be Logged In to Post a Message or Vote</h5>
                 </div>
                 <div ng-show="loggedIn">
                     <div class="form-group" ng-class="{ 'has-error': postForm.loginUsername.$touched && postForm.post.$invalid }">
@@ -75,13 +75,13 @@
                     <div class="row grey-box-no-width">
                         <div class="col-sm-11">
                             <p>{{post.text}}</p>
-                            <p>Posted: {{post.create_date}} by {{post.username}}</p> 
+                            <p>Posted: {{post.create_date}} by {{post.username}}</p>
                         </div>
                         <div class="col-sm-1">
-                            <div class="arrows">
-                                <span class="glyphicon glyphicon-thumbs-up up-vote vote" ng-click="voteUp(post.id)"></span>
-                                <p class="numVotes">1</p>
-                                <span class="glyphicon glyphicon-thumbs-down down-vote vote" ng-click="voteDown(post.id)"></span>
+                            <div class="arrows"> <!-- up-vote vote -->
+                                <span class="glyphicon glyphicon-thumbs-up" ng-click="voteFunc(post, 1)"></span>
+                                <p class="numVotes">{{post.voteTotal}}</p>
+                                <span class="glyphicon glyphicon-thumbs-down" ng-click="voteFunc(post, -1)"></span>
                             </div>
                         </div>
                     </div>

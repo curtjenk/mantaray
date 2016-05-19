@@ -1,7 +1,7 @@
 mantarayApp.config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: function($routeParams) {
-            console.log("routing to home");
+           // console.log("routing to home");
             return 'app/components/home/homeView.html';
         }
     });

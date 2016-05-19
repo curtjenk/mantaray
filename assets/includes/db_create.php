@@ -14,17 +14,23 @@
   } else 
   if ($func == 'create_post') {
       $resp = createPost($json_input);
+  } else
+  if ($func == 'create_vote') {
+      $resp = createVote($json_input);
   }
 
   //$resp['echo'] = $json_input;
-  echo json_encode($resp);
+  echo json_encode($resp, JSON_NUMERIC_CHECK);
 
 function createVote ($input) {
     $resp = [];
     $resp['status'] = 'success';
+    $resp['echo'] = $input;
 
     $text = $input['postText'];
     $username = $input['username'];
+    $postId = $input['postId'];
+    $direction = $input['direction'];
       
       try {
         DB::insert('vote', array(
@@ -32,18 +38,10 @@ function createVote ($input) {
           'postId' => $postId,
           'direction' => $direction
         ));
-
-        //direction = 1, means up
-        //direction  -1, means down
-        $dbResults = DB::query("SELECT SUM(direction) AS voteTotal FROM vote WHERE id =  " . $postId);
+    
+        $dbResults = DB::query("SELECT SUM(direction) AS voteTotal FROM vote WHERE postId = %i", $postId);
         $resp['voteTotal'] = $dbResults[0]['voteTotal'];
 
-        if ($input['returnAll']) {
-          $s = [];
-          $s['table'] = 'post';
-          $s['order'] = 'order by create_date desc';
-          $resp['returnAll'] = select($s);
-        }
       } catch (MeekroDBException $e) {
         $resp['status'] = 'fail';
         $resp['failType'] = 'db';
@@ -70,9 +68,7 @@ function createPost ($input) {
 
         if ($input['returnAll']) {
           $i = [];
-          $i['table'] = 'post';
-          $i['order'] = 'order by create_date desc';
-          $resp['returnAll'] = select($i);
+          $resp['returnAll'] = selectPostsAndVotes();
         }
       } catch (MeekroDBException $e) {
         $resp['status'] = 'fail';

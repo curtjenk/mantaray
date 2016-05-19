@@ -34,16 +34,29 @@ mantarayApp.factory('dbAjax', function($http) {
             dataType: 'json'
         });
     }
-    dbAjax.update = function(data) {
-        console.log("dbAjax update");
-        var postData = data;
-        return $http({
-            method: "post",
-            url: dbUpdateUrl,
-            data: postData,
-            dataType: 'json'
-        });
-    }
+
+    // dbAjax.readPostAndVote = function() {
+    //     console.log("dbAjax read posts and votes");
+    //     var postData = {};
+    //     postData.table = 'postAndVote';
+    //     return $http({
+    //         method: "post",
+    //         url: dbReadUrl,
+    //         data: postData,
+    //         dataType: 'json'
+    //     });
+    // }
+
+    // dbAjax.update = function(data) {
+    //     console.log("dbAjax update");
+    //     var postData = data;
+    //     return $http({
+    //         method: "post",
+    //         url: dbUpdateUrl,
+    //         data: postData,
+    //         dataType: 'json'
+    //     });
+    // }
 
     dbAjax.createUser = function(data) {
         console.log("dbAjax create User");

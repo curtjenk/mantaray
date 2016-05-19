@@ -9,7 +9,7 @@ mantarayApp.controller("loginController", function($rootScope, $scope, $http, db
         $rootScope.username = "";
         $rootScope.isLoggedIn = false;
 
-        console.log($scope.loginForm.$valid);
+   //     console.log($scope.loginForm.$valid);
 
         if (!$scope.loginForm.$valid) {
             console.log("loginForm is invalid");
@@ -21,7 +21,7 @@ mantarayApp.controller("loginController", function($rootScope, $scope, $http, db
             password: $scope.loginPassword
         }).then(
             function(success) {
-                console.log(success);
+           //     console.log(success);
 
                 $rootScope.username = $scope.loginUsername;
                 $rootScope.isLoggedIn = true;

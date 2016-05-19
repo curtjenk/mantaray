@@ -1,13 +1,12 @@
 # Mantaray
 
-Manatary is an humitartian effort to save the manatarys using social media.
+Manatary is an humitartian effort to save the manatarays using social media.
 
 The app has the following features
-- Registration
-- Login
-- 
--
--
+* Registration
+* Login
+* The logged in user can up/down vote a post only once.  This rule is enforced in the database.
+* Follow other supporters
 
 ### Tech
 
@@ -18,7 +17,7 @@ Mantaray uses a number of open source projects to work properly:
 * [Angular-UI-Bootstrap] - image carousel
 * [Angular Messages] - form validation
 * [Apache] - webserver
-* [jQuery] - duh
+* [jQuery] - JavaScript library
 * [MySQL] - relational database
 * [MeekroDB] - PHP MySQL library
 * [Font Awesome] - Icons
@@ -27,24 +26,24 @@ Mantaray uses a number of open source projects to work properly:
 ### Installation
   - cd to the project directory
     * run npm install
-  
+
 ### Demo
 
 http://curtisjenkins.net/mantaray
 
 ### Todos
- 
+
 
 ### License
 
-MIT
+MIT**
 
 
 **Free Software, Well Yeah!**
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-
+   [MeekroDB]: <http://meekro.com/>
    [PHP]: <http://www.php.net/>
    [MySQL]: <http://mysql.com>
    [Apache]: <http://apache.org>
@@ -52,5 +51,5 @@ MIT
    [AngularJS]: <http://angularjs.org>
    [jQuery]: <http://jquery.com>
    [Angular-UI-Bootstrap]: <https://angular-ui.github.io/bootstrap/>
-   [Angular-Messages]: <>
+   [Angular Messages]: <>
    [Font Awesome]: <http://fontawesome.io>
