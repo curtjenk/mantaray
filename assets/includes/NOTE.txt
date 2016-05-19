@@ -1,0 +1,17 @@
+You will need to create a db_connect.php file with the contents below.
+
+
+<?php
+  require_once "../libs/meekrodb.2.3.class.php";
+  DB::$error_handler = false; // since we're catching errors, don't need error handler
+  DB::$throw_exception_on_error = true;
+  DB::$host = '127.0.0.1';   <-- change as appropriate
+  DB::$dbName= 'mantaray';
+  DB::$user = 'x';           <-- change as appropriate
+  DB::$password = 'x';       <-- change as appropriate
+?>
+
+
+
+
+
