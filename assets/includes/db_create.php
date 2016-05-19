@@ -10,10 +10,10 @@
  
   $func = $json_input['func'];
 
-  if ($func = 'create_user') {
+  if ($func == 'create_user') {
       $resp = createUser($json_input);
   }
-  if ($func = 'create_post') {
+  if ($func == 'create_post') {
       $resp = createPost($json_input);
   }
 

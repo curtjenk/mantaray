@@ -1,31 +1,44 @@
 <?php
 
   require('includes/db_connect.php');
+   $resp = [];
   // header('Content-type:application/json');
-  $data = file_get_contents("php://input");
-  $input = json_decode($data, TRUE);
-  
-  $key = $input['key'];
+  $post_data = file_get_contents("php://input");
+  if ( !empty($post_data) ) {
+      $json_input = json_decode($post_data, TRUE);
+      $resp['echo'] = $json_input;
+      $func = $json_input['func'];
+      $vote = $json_input['vote'];
 
- 
-  $resp = [];
-  //first get the current click count, increment by 1, then update the DB.
-  $query = "SELECT click_count FROM user WHERE idUser=" . $key;
-  $result = mysql_query($query);
-  $row = mysql_fetch_assoc($result);
-  $curCount = $row['click_count'];
-  //increment by 1
-  $newCount = $curCount + 1;
-  //now update the count
-  $query = "UPDATE user SET click_count = " . $newCount . " WHERE idUser = " . $key;
- 	$result = mysql_query($query);
+      if ($func == 'update_vote_count' && ($vote == 'up' || $vote == 'down'))  {
+         //request should have a func and vote ('up' or 'down')
+        $postId = $json_input['postId'];
+        $resp = updateVoteCount($postId, $vote);
+      }
+      
+   //convert the php array to json
 
- 	if (!$result) {
-     $resp['message'] = "fail";
- 	} {
- 		$resp['message'] = "success";
-    $resp['newCount'] = $newCount;
- 	}
+  }
+
+  function updateVoteCount($postId, $vote) {
+    $resp = [];
+   
+    // Read the vote(s) for this post id
+    // increment or
+    try {
+      $query = "SELECT * FROM " . $input['table'] . " WHERE 1=1 " . $predicate;
+      $resp['status'] = 'success';
+      $resp['rows'] = DB::query($query);
+      $resp['query'] = $query;
+    } catch (MeekroDBException $e) {
+      $resp['status'] = 'fail';
+      $resp['failType'] = 'db';
+      $resp['message'] = $e->getMessage();
+      $resp['query'] = $e->getQuery();
+    }
+
+    return $resp;
+  }
 
   echo json_encode($resp);
 

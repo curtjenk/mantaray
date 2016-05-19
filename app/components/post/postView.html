@@ -79,9 +79,9 @@
                         </div>
                         <div class="col-sm-1">
                             <div class="arrows">
-                                <span class="glyphicon glyphicon-thumbs-up up-vote vote" ng-click="voteUp(post)"></span>
+                                <span class="glyphicon glyphicon-thumbs-up up-vote vote" ng-click="voteUp(post.id)"></span>
                                 <p class="numVotes">1</p>
-                                <span class="glyphicon glyphicon-thumbs-down down-vote vote"></span>
+                                <span class="glyphicon glyphicon-thumbs-down down-vote vote" ng-click="voteDown(post.id)"></span>
                             </div>
                         </div>
                     </div>

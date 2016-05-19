@@ -33,6 +33,18 @@ mantarayApp.factory('dbAjax', function($http) {
             dataType: 'json'
         });
     }
+    dbAjax.update = function(data) {
+        console.log("dbAjax update");
+        var postData = data;
+        return $http({
+            method: "post",
+            url: dbUpdateUrl,
+            data: postData,
+            dataType: 'json'
+        });
+
+    }
+
     dbAjax.createUser = function(data) {
         console.log("dbAjax create User");
         var postData = data;
