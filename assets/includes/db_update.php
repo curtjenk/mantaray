@@ -1,6 +1,5 @@
 <?php
-
-  require('includes/db_connect.php');
+  require('db_connect.php');
    $resp = [];
   // header('Content-type:application/json');
   $post_data = file_get_contents("php://input");
@@ -8,34 +7,41 @@
       $json_input = json_decode($post_data, TRUE);
       $resp['echo'] = $json_input;
       $func = $json_input['func'];
-      $vote = $json_input['vote'];
-
-      if ($func == 'update_vote_count' && ($vote == 'up' || $vote == 'down'))  {
+      if ($func == 'update_vote_count')  {
          //request should have a func and vote ('up' or 'down')
-        $postId = $json_input['postId'];
-        $resp = updateVoteCount($postId, $vote);
+         $resp['results'] = updateVoteCount($postId, $vote);
       }
-      
-   //convert the php array to json
-
   }
 
-  function updateVoteCount($postId, $vote) {
+  function updateVoteCount($input) {
     $resp = [];
-   
-    // Read the vote(s) for this post id
-    // increment or
-    try {
-      $query = "SELECT * FROM " . $input['table'] . " WHERE 1=1 " . $predicate;
-      $resp['status'] = 'success';
-      $resp['rows'] = DB::query($query);
-      $resp['query'] = $query;
-    } catch (MeekroDBException $e) {
-      $resp['status'] = 'fail';
-      $resp['failType'] = 'db';
-      $resp['message'] = $e->getMessage();
-      $resp['query'] = $e->getQuery();
-    }
+    $resp['status'] = 'success';
+    $vote = $input['vote'];
+    $postId = $input['id'];
+
+    // 1) Read the vote(s) for this post id
+    // 2) increment or decement
+    // 3) update the vote
+  
+    if ($vote == 'up') {
+        $val = 1;
+    } else if ($vote == 'down') {
+       $val = -1;
+    } else
+       $val = 0; 
+
+
+    // try {
+    //   $query = "SELECT * FROM " . $input['table'] . " WHERE 1=1 " . $predicate;
+    //   $resp['status'] = 'success';
+    //   $resp['rows'] = DB::query($query);
+    //   $resp['query'] = $query;
+    // } catch (MeekroDBException $e) {
+    //   $resp['status'] = 'fail';
+    //   $resp['failType'] = 'db';
+    //   $resp['message'] = $e->getMessage();
+    //   $resp['query'] = $e->getQuery();
+    // }
 
     return $resp;
   }

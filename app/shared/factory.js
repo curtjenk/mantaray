@@ -21,11 +21,12 @@ mantarayApp.factory('dbAjax', function($http) {
             dataType: 'json'
         });
     }
-    dbAjax.read = function(table, where) {
+    dbAjax.read = function(table, where, order) {
         console.log("dbAjax read");
         var postData = {};
         postData.table = table;
         postData.where = where;
+        postData.order = order;
         return $http({
             method: "post",
             url: dbReadUrl,
@@ -42,7 +43,6 @@ mantarayApp.factory('dbAjax', function($http) {
             data: postData,
             dataType: 'json'
         });
-
     }
 
     dbAjax.createUser = function(data) {
@@ -61,7 +61,7 @@ mantarayApp.factory('dbAjax', function($http) {
         console.log("dbAjax create Tweet");
         var postData = data;
         postData.func = 'create_post';
-        console.log(postData);
+     //   console.log(postData);
         return $http({
             method: "post",
             url: dbCreateUrl,

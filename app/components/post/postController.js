@@ -3,18 +3,23 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
     $scope.errorMessage = "";
     $scope.posts = [];
 
-    //get all the post messages
-    dbAjax.read('post', '').then(
-        function(good) {
-            $scope.posts = good.data.rows;
-            // console.log($scope.posts);
-        },
-        function(bad) {
-            console.log(bad);
-        });
+    readAllPosts();
+
+    function readAllPosts() {
+        console.log('getting all the posts');
+        //get all the post messages
+        dbAjax.read('post', '', 'order by create_date desc').then(
+            function(good) {
+                 console.log(good);
+                $scope.posts = good.data.dbRead.rows;    
+            },
+            function(bad) {
+                console.log(bad);
+            });
+    }
 
     $scope.postFunc = function() {
-        console.log($rootScope.username);
+       // console.log($rootScope.username);
 
         dbAjax.createPost({
             username: $rootScope.username,
@@ -23,8 +28,8 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
         }).then(
             function(success) {
                 console.log(success);
-                //redirect to home page
-                //$location.path('/');
+                $scope.postText = '';
+                $scope.posts = success.data.returnAll.rows;   
             },
             function(error) {
                 console.log(error)
@@ -33,14 +38,14 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
     }; //end function
 
     $scope.voteUp = function(postId) {
-        console.log(postId);
+        //console.log(postId);
         dbAjax.update({
             id: postId,
             func: 'update_vote_count',
             vote: 'up'
         }).then(
             function(success) {
-                console.log(success); 
+                console.log(success);
             },
             function(error) {
                 console.log(error)
@@ -49,7 +54,7 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
 
     $scope.voteDown = function(postId) {
         console.log(postId);
-         dbAjax.update({
+        dbAjax.update({
             id: postId,
             func: 'update_vote_count',
             vote: 'down'
