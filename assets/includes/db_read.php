@@ -8,6 +8,8 @@
       $json_input = json_decode($post_data, TRUE);
       if ($json_input['table'] == 'postAndVote') {
         $resp['dbRead'] = selectPostsAndVotes();
+      } else if ($json_input['table'] == 'followingAndToFollower') {
+        $resp['dbRead'] = selectFollowingAndToFollower($json_input['username']);
       } else {
         //generic read function
         $resp['dbRead'] = select($json_input);

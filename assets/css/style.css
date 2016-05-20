@@ -131,39 +131,50 @@ body {
   font-size: 22px;
 }
 
-/* line 13, ../../tools/compass/sass/style.scss */
+/* line 1, ../../tools/compass/sass/_follow.scss */
+.fa-frown-o {
+  color: red;
+}
+
+/* line 14, ../../tools/compass/sass/style.scss */
 body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-/* line 17, ../../tools/compass/sass/style.scss */
+/* line 18, ../../tools/compass/sass/style.scss */
 .grey-box {
   margin-top: 10px;
   background-color: #E6E6E6;
   width: 50%;
 }
 
-/* line 22, ../../tools/compass/sass/style.scss */
+/* line 23, ../../tools/compass/sass/style.scss */
 .nav-pad-top {
   padding-top: 55px;
 }
 
-/* line 26, ../../tools/compass/sass/style.scss */
+/* line 27, ../../tools/compass/sass/style.scss */
+#home-btn {
+  position: relative;
+  z-index: 5;
+}
+
+/* line 31, ../../tools/compass/sass/style.scss */
 .error-text {
   color: red;
 }
 
-/* line 30, ../../tools/compass/sass/style.scss */
+/* line 35, ../../tools/compass/sass/style.scss */
 .form-group {
   width: 80%;
   margin: auto;
 }
-/* line 33, ../../tools/compass/sass/style.scss */
+/* line 38, ../../tools/compass/sass/style.scss */
 .form-group label {
   margin-top: 10px;
 }
 
-/* line 38, ../../tools/compass/sass/style.scss */
+/* line 43, ../../tools/compass/sass/style.scss */
 .button-holder {
   text-align: center;
   margin-top: 20px;

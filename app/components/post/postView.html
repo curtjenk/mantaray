@@ -76,7 +76,7 @@
                         <div class="col-sm-11">
                             <p>{{post.text}}</p>
                             <p>Posted: {{post.create_date}} by {{post.username}}</p>
-                            <p>
+                            <p ng-if="post.username !== username">
                               <a ng-click="followFunc(post)" role="button"><i class="fa fa-smile-o">&nbsp;Follow</i></a>
                             </p>
                         </div>

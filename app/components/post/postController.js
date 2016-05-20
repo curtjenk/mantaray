@@ -2,6 +2,7 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
 
     $scope.errorMessage = "";
     $scope.posts = [];
+    $scope.username = $rootScope.username;
 
     readAllPosts();
 

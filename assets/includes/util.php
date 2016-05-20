@@ -1,6 +1,32 @@
 <?php
  require_once('db_connect.php');
 
+/*
+  find all the people the loggedin user is following
+  find all the people the loggedin user is not following
+*/
+ function selectFollowingAndToFollower($loggedIn) {
+   $resp = [];
+   $resp['echo'] = loggedIn;
+   try {
+     $query = "SELECT username_poster AS username FROM following WHERE username_follower = %s";
+     $resp['rows_following'] = DB::query($query, $loggedIn);
+     $query = "SELECT username FROM user
+              WHERE username != %s
+              AND username NOT IN (" . $query . ")";
+     $resp['rows_not_following'] = DB::query($query, $loggedIn, $loggedIn);
+   } catch (MeekroDBException $e) {
+     $resp['status'] = 'fail';
+     $resp['failType'] = 'db';
+     $resp['message'] = $e->getMessage();
+     $resp['query'] = $e->getQuery();
+   }
+   return $resp;
+ }
+
+/*
+
+*/
  function selectPostsAndVotes() {
     $resp = [];
 
@@ -27,15 +53,13 @@
     $resp['echo'] = $input;
     $predicate = "";
     if (!empty($input['where'])) {
+      $predicate = $predicate . " AND ";
       foreach($input['where'] as $key => $val) {
-        if (strlen($predicate) > 0) {
-            $predicate = $predicate . " AND ";
-        }
         if ($key == 'password') {
             continue;
         } else {
              if (is_numeric($val)) {
-                $predicate = $predicate . " " . $key . "'" . $val . "'"; 
+                $predicate = $predicate . " " . $key . "'" . $val . "'";
              } else {
                $predicate = $predicate . " " . $key . "'" . $val . "'";  //key will also contain the operator like "=", "<", ">"
             }

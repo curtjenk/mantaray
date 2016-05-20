@@ -10,7 +10,7 @@ mantarayApp.factory('dbAjax', function($http) {
     var dbReadUrl = "assets/includes/db_read.php";
     var dbLoginUrl = "assets/includes/db_readForLogin.php";
     var dbUpdateUrl = "assets/includes/db_update.php";
-    var dbDeleteUrl = "assets/includes/db_delete.php";
+    var dbDeleteFollowUrl = "assets/includes/db_deleteFollow.php";
 
     dbAjax.login = function(data) {
         console.log("dbAjax read");
@@ -20,13 +20,26 @@ mantarayApp.factory('dbAjax', function($http) {
             data: data,
             dataType: 'json'
         });
-    }
+    };
     dbAjax.read = function(table, where, order) {
         console.log("dbAjax read");
         var postData = {};
         postData.table = table;
         postData.where = where;
         postData.order = order;
+        return $http({
+            method: "post",
+            url: dbReadUrl,
+            data: postData,
+            dataType: 'json'
+        });
+    };
+
+    dbAjax.readFollowing = function(loggedInUserName) {
+        console.log("dbAjax read");
+        var postData = {};
+        postData.table = 'followingAndToFollower';
+        postData.username = loggedInUserName;
         return $http({
             method: "post",
             url: dbReadUrl,
@@ -85,7 +98,18 @@ mantarayApp.factory('dbAjax', function($http) {
             dataType: 'json'
         });
     };
-
+    dbAjax.deleteFollow = function(data) {
+        console.log("dbAjax delete follower");
+        var postData = data;
+        postData.func = 'delete_follow';
+        // console.log(postData);
+        return $http({
+            method: "post",
+            url: dbDeleteFollowUrl,
+            data: postData,
+            dataType: 'json'
+        });
+    };
     // dbAjax.readUser = function(token) {
     //     return $http({
     //         method: "post",

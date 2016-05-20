@@ -1,17 +1,80 @@
-mantarayApp.controller("followController", function($rootScope, $scope, $http, dbAjax, $cookies, $location) {
+mantarayApp.controller("followController", function ($rootScope, $scope, $http, dbAjax, $cookies, $location) {
+	//Can't access this page unless logged in
+	$scope.errorMessage = "";
+	var getFollowingData = function () {
+		dbAjax.readFollowing($rootScope.username).then(
+			function (found) {
+				console.log(found);
+				$scope.following = found.data.dbRead.rows_following;
+				$scope.notFollowing = found.data.dbRead.rows_not_following;
+			},
+			function (error) {
+				console.log(error);
+			}
+		);
+	};
 
-    $scope.errorMessage = "";
-    var where = { 'username!=' : $rootScope.username};
-    console.log(where);
+	var follow = function (who) {
+		dbAjax.createFollower({
+			username_follower: $rootScope.username, //the person loggedIn not who posted
+			username_poster: who.username,
+			postId: 0
+		}).then(
+			function (success) {
+				// console.log(success);
+				if (success.data.status == 'success') {
+					getFollowingData();
+				}
+				if (success.data.status == 'fail' && success.data.failType == 'db') {
+					console.log(success); //likely dupe key ... user already following this post
+				}
+			},
+			function (error) {
+				console.log(error);
+			});
+	};
 
-    dbAjax.read('user', where, '').then(
-      function(found){
-        console.log(found);
+  var unFollow = function (who) {
+    dbAjax.deleteFollow({
+      username_follower: $rootScope.username, //the person loggedIn not who posted
+      username_poster: who.username,
+      postId: 0
+    }).then(
+      function (success) {
+        // console.log(success);
+        if (success.data.status == 'success') {
+          getFollowingData();
+        }
+        if (success.data.status == 'fail' && success.data.failType == 'db') {
+          console.log(success); //likely dupe key ... user already following this post
+        }
       },
-      function(error){
+      function (error) {
         console.log(error);
-      }
-    );
+      });
+  };
+
+	getFollowingData();
+
+	$scope.followFunc = function (who, action) {
+    console.log(who);
+    console.log(action);
+		if (action == 'follow') {
+      follow(who);
+		} else {
+      unFollow(who);
+		}
+	};
+
+});
+
+/* on the php
+
+unfollow    DB::delete('following', 'username_follower = %s AND username_poster=%s', loggedInUser, who)
 
 
-  });
+
+
+
+
+*/

@@ -27,7 +27,7 @@ mantarayApp.config(function($routeProvider) {
     });
     $routeProvider.when('/follow', {
         templateUrl: function($routeParams) {
-            return 'app/components/follow/followView.html';
+          return 'app/components/follow/followView.html';
         }
     });
     $routeProvider.otherwise({

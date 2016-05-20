@@ -36,7 +36,7 @@
       $postId = $input['postId'];
 
       try {
-          DB::insert('follower', array(
+          DB::insert('following', array(
             'postId' => $postId,
             'username_follower' => $username_follower,
             'username_poster' => $username_poster
@@ -84,6 +84,7 @@ function createVote ($input) {
 
 function createPost ($input) {
     $resp = [];
+    $resp['echo'] = $input;
     $resp['status'] = 'success';
 
     $text = $input['postText'];

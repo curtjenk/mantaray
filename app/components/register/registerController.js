@@ -1,10 +1,10 @@
-mantarayApp.controller('registerController', function($scope, $cookies, dbAjax) {
+mantarayApp.controller('registerController', function($rootScope, $scope, $location, $cookies, dbAjax) {
     $scope.errorMessage = "";
 
     $scope.registerFunc = function() {
             console.log("registerfunc called");
             if (!$scope.registerForm.$valid) { //check for a valid form.
-                return
+                return;
             }
             if (!($scope.regPassword && $scope.regPassword === $scope.regPassword2)) {
                 $scope.errorMessage = "Passwords must match";
@@ -19,11 +19,22 @@ mantarayApp.controller('registerController', function($scope, $cookies, dbAjax) 
                 })
                 .then(
                     function(success) {
-                        console.log(success);
+
+                        if (success.data.status == 'success') {
+                          $rootScope.username = $scope.regUsername;
+                          $rootScope.isLoggedIn = true;
+                          $scope.$emit("userLoggedIn", {
+                              username: $scope.regUsername
+                          });
+                            $location.path('/');
+                        } else {
+                            console.log(success);
+                            	$scope.errorMessage = "Sorry Unable to Login at this time";
+                        }
                     },
                     function(error) {
-                        console.log(error)
+                        console.log(error);
                     });
-        } //end function
+        }; //end function
 
 });
