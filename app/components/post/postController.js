@@ -10,10 +10,11 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
         console.log('getting all the posts and their vote total');
         //get all the post messages
         //dbAjax.readPostAndVote().then(
-        dbAjax.read('postAndVote').then(
+        dbAjax.readPostView($rootScope.username).then(
+        // dbAjax.read('postAndVote').then(
             function(good) {
-             //   console.log(good);
-                $scope.posts = good.data.dbRead.rows;
+             console.log(good);
+            $scope.posts = good.data.dbRead.rows;
             },
             function(bad) {
                 console.log(bad);
@@ -82,7 +83,7 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
           function(success) {
               // console.log(success);
               if (success.data.status == 'success') {
-
+                readAllPosts();
               }
               if (success.data.status == 'fail' && success.data.failType == 'db') {
                   console.log(success); //likely dupe key ... user already following this post
@@ -91,5 +92,25 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
           function(error) {
               console.log(error);
           });
+    };
+
+    $scope.unFollow = function (who) {
+      dbAjax.deleteFollow({
+        username_follower: $rootScope.username, //the person loggedIn not who posted
+        username_poster: who.following,
+        postId: 0
+      }).then(
+        function (success) {
+          console.log(success);
+          if (success.data.status == 'success') {
+             readAllPosts();
+          }
+          if (success.data.status == 'fail' && success.data.failType == 'db') {
+            console.log(success); //likely dupe key ... user already following this post
+          }
+        },
+        function (error) {
+          console.log(error);
+        });
     };
   });

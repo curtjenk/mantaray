@@ -48,7 +48,37 @@
     return $resp;
  }
 
- function select($input) {
+
+ function selectPostsVotesFollowing($loggedInUserName) {
+    $resp = [];
+
+    try {
+      $query = "SELECT b.*, a.username_poster AS following, CASE WHEN a.username_poster IS NULL THEN 0 ELSE 1 END AS following_flag FROM
+          ( SELECT post.*, COALESCE(SUM(vote.direction),0) as voteTotal
+            FROM post LEFT JOIN vote ON post.id = vote.postId
+      	     GROUP BY post.id ORDER BY post.create_date DESC ) b
+             LEFT JOIN
+              (SELECT username_poster FROM following WHERE username_follower = %s) a
+             ON  b.username = a.username_poster ";
+
+      // $query = "SELECT post.*, COALESCE(SUM(vote.direction),0) as voteTotal ";
+      // $query = $query . " FROM post LEFT JOIN vote ON post.id = vote.postId ";
+      // $query = $query . "   GROUP BY post.id ORDER BY post.create_date DESC";
+
+      $resp['rows'] = DB::query($query, $loggedInUserName);
+      $resp['query'] = $query;
+      $resp['status'] = 'success';
+    } catch (MeekroDBException $e) {
+      $resp['status'] = 'fail';
+      $resp['failType'] = 'db';
+      $resp['message'] = $e->getMessage();
+      $resp['query'] = $e->getQuery();
+    }
+
+    return $resp;
+ }
+
+  function select($input) {
     $resp = [];
     $resp['echo'] = $input;
     $predicate = "";

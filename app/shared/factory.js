@@ -21,6 +21,19 @@ mantarayApp.factory('dbAjax', function($http) {
             dataType: 'json'
         });
     };
+    dbAjax.readPostView = function(username) {
+        console.log("dbAjax read");
+        var postData = {};
+        postData.table = 'postAndVote';
+        postData.username = username;
+        return $http({
+            method: "post",
+            url: dbReadUrl,
+            data: postData,
+            dataType: 'json'
+        });
+    };
+
     dbAjax.read = function(table, where, order) {
         console.log("dbAjax read");
         var postData = {};

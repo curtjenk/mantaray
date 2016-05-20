@@ -1,95 +1,108 @@
 <div class="container-fluid post-wrapper" ng-controller="postController">
-    <div class="row nav-pad-top">
-        <div class="col-sm-8 col-sm-offset-1">
-            <h3>Post a new message</h3>
-        </div>
+  <div class="row nav-pad-top">
+    <div class="col-sm-8 col-sm-offset-1">
+      <h3>Post a new message</h3>
     </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 grey-box-no-width">
-            <form role="form" name="postForm" ng-submit="postFunc()" novalidate>
-                <div ng-hide="loggedIn" class="text-center">
-                    <h5>You Must Be Logged In to Post a Message or Vote</h5>
-                </div>
-                <div ng-show="loggedIn">
-                    <div class="form-group" ng-class="{ 'has-error': postForm.loginUsername.$touched && postForm.post.$invalid }">
-                        <label>Message</label>
-                        <textarea type="text" name="postText" ng-model="postText" required class="form-control"></textarea>
-                        <div ng-messages="postForm.postText.$error" ng-if="postForm.postText.$touched" role="alert">
-                            <p ng-message="required">Text is required.</p>
-                        </div>
-                    </div>
-                    <div class="form-group button-holder">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
-            </form>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 grey-box-no-width">
+      <form role="form" name="postForm" ng-submit="postFunc()" novalidate>
+        <div ng-hide="loggedIn" class="text-center">
+          <h5>You Must Be Logged In to Post a Message or Vote</h5>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-1">
-            <h3>Recent Posts</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 grey-box-no-width">
-            <form>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                        <input type="text" class="form-control" placeholder="Search Posts" ng-model="searchBM">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 grey-box-no-width">
-            <div id="page-controls" class="text-center">
-                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
-                </dir-pagination-controls>
+        <div ng-show="loggedIn">
+          <div class="form-group" ng-class="{ 'has-error': postForm.loginUsername.$touched && postForm.post.$invalid }">
+            <label>Message</label>
+            <textarea type="text" name="postText" ng-model="postText" required class="form-control"></textarea>
+            <div ng-messages="postForm.postText.$error" ng-if="postForm.postText.$touched" role="alert">
+              <p ng-message="required">Text is required.</p>
             </div>
+          </div>
+          <div class="form-group button-holder">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </div>
+      </form>
     </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 grey-box-no-width">
-            <div id="sort-btns" class="text-center">
-                <div class="col-sm-4">
-                    <a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">Sort by Username
-                        <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a href="" ng-click="sortType = 'date'; sortReverse = !sortReverse">Sort by Date
-                        <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
-                        <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
-                    </a>
-                </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-1">
+      <h3>Recent Posts</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 grey-box-no-width">
+      <form>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-search"></i>
             </div>
+            <input type="text" class="form-control" placeholder="Search Posts" ng-model="searchBM">
+          </div>
         </div>
+      </form>
     </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2" style="padding-bottom: 5px;">
-            <div id="recent-posts">
-                <div dir-paginate="post in posts | orderBy:orderByFunction:sortReverse | filter:searchBM |itemsPerPage:5">
-                    <div class="row grey-box-no-width">
-                        <div class="col-sm-11">
-                            <p>{{post.text}}</p>
-                            <p>Posted: {{post.create_date}} by {{post.username}}</p>
-                            <p ng-if="post.username !== username">
-                              <a ng-click="followFunc(post)" role="button"><i class="fa fa-smile-o">&nbsp;Follow</i></a>
-                            </p>
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="arrows"> <!-- up-vote vote -->
-                                <span class="glyphicon glyphicon-thumbs-up" ng-click="voteFunc(post, 1)"></span>
-                                <p class="numVotes">{{post.voteTotal}}</p>
-                                <span class="glyphicon glyphicon-thumbs-down" ng-click="voteFunc(post, -1)"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 grey-box-no-width">
+      <div id="page-controls" class="text-center">
+        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"></dir-pagination-controls>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 grey-box-no-width">
+      <div id="sort-btns" class="text-center">
+        <div class="col-sm-4">
+          <a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">Sort by Username
+            <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </div>
+        <div class="col-sm-4">
+          <a href="" ng-click="sortType = 'date'; sortReverse = !sortReverse">Sort by Date
+            <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2" style="padding-bottom: 5px;">
+      <div id="recent-posts">
+        <div dir-paginate="post in posts | orderBy:orderByFunction:sortReverse | filter:searchBM |itemsPerPage:5">
+          <div class="row grey-box-no-width">
+            <div class="col-sm-11">
+              <p>{{post.text}}</p>
+              <p>Posted:
+                {{post.create_date}}
+                by
+                {{post.username}}</p>
+
+              <p ng-if="post.username !== username && post.following_flag == 0">
+                <a ng-click="followFunc(post)" role="button">
+                  <i class="fa fa-smile-o">&nbsp;Follow</i>
+                </a>
+              </p>
+              <p ng-if="post.username !== username && post.following_flag == 1">
+                <a ng-click="unFollow(post)" role="button">
+                  <i class="fa fa-frown-o">&nbsp;Unfollow</i>
+                </a>
+              </p>
             </div>
+            <div class="col-sm-1">
+              <div class="arrows">
+                <!-- up-vote vote -->
+                <span class="glyphicon glyphicon-thumbs-up" ng-click="voteFunc(post, 1)"></span>
+                <p class="numVotes">{{post.voteTotal}}</p>
+                <span class="glyphicon glyphicon-thumbs-down" ng-click="voteFunc(post, -1)"></span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
