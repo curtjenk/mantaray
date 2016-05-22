@@ -5,8 +5,10 @@ Manatary is an humitartian effort to save the manatarays using social media.
 The app has the following features
 * Registration
 * Login
-* The logged in user can up/down vote a post only once.  This rule is enforced in the database.
-* Follow other supporters
+* The logged in user can up/down vote a post only once.  This rule is enforced with a database constraint
+* Follow/Unfollow other supporters
+* Make donation.
+  * Users who make a donation get to see a video
 
 ### Tech
 
