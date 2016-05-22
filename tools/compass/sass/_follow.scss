@@ -1,3 +1,13 @@
-.fa-frown-o {
-  color: $error-color;
+.follow-wrapper {
+    font-family: 'Josefin Sans', sans-serif;
+    .fa-frown-o {
+        color: $error-color;
+    }
+    .post {
+        border-bottom: 1px solid lightblue;
+    }
+    h3,
+    h5 {
+        margin-left: 65px;
+    }
 }

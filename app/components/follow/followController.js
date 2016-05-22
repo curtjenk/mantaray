@@ -66,6 +66,25 @@ mantarayApp.controller("followController", function ($rootScope, $scope, $http, 
 		}
 	};
 
+ $scope.showPosts = function(user) {
+	 console.log(user.toggled);
+	 if (user.toggled || user.toggled === undefined) {
+		 //read the posts for this user
+		 dbAjax.read('post', {'username=':user.username}, 'create_date DESC')
+		    .then(
+					function(good)
+					{
+						// console.log(good);
+						user.posts = good.data.dbRead.rows;
+					},
+					function(bad)
+					{
+							console.log(bad);
+					});
+	 }
+	 user.toggled = !user.toggled;
+ };
+
 });
 
 /* on the php

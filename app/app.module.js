@@ -17,6 +17,10 @@ mantarayApp.run(function ($rootScope, $location) {
 			if (a !== '/' && a !== '/login' && a !== '/register') {
         //Put some code in here to check if they are logged in!
         //If not... send them home
+				 //TESTING ONLY
+				//  $rootScope.username = 'curtis';
+				//  $rootScope.loggedIn = true;
+				 //----------------------------
 				if (!$rootScope.loggedIn) {
 					$location.path('/');
 				}

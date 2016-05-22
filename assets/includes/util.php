@@ -97,7 +97,7 @@
       }
     }
     if (!empty($input['order'])) {
-      $predicate = $predicate . " " . $input['order'];
+      $predicate = $predicate . " ORDER BY " . $input['order'];
     }
 
     try {

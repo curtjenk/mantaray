@@ -117,8 +117,12 @@ body {
 .post-wrapper h3, .post-wrapper h5 {
   margin-left: 65px;
 }
+/* line 6, ../../tools/compass/sass/_post.scss */
+.post-wrapper .fa-frown-o {
+  color: red;
+}
 
-/* line 8, ../../tools/compass/sass/_post.scss */
+/* line 11, ../../tools/compass/sass/_post.scss */
 .grey-box-no-width {
   margin-top: 10px;
   padding-top: 5px;
@@ -126,14 +130,27 @@ body {
   font-size: 14px;
 }
 
-/* line 16, ../../tools/compass/sass/_post.scss */
+/* line 19, ../../tools/compass/sass/_post.scss */
 .arrows {
   font-size: 22px;
 }
 
 /* line 1, ../../tools/compass/sass/_follow.scss */
-.fa-frown-o {
+.follow-wrapper {
+  font-family: 'Josefin Sans', sans-serif;
+}
+/* line 3, ../../tools/compass/sass/_follow.scss */
+.follow-wrapper .fa-frown-o {
   color: red;
+}
+/* line 6, ../../tools/compass/sass/_follow.scss */
+.follow-wrapper .post {
+  border-bottom: 1px solid lightblue;
+}
+/* line 9, ../../tools/compass/sass/_follow.scss */
+.follow-wrapper h3,
+.follow-wrapper h5 {
+  margin-left: 65px;
 }
 
 /* line 14, ../../tools/compass/sass/style.scss */
@@ -164,17 +181,22 @@ body {
   color: red;
 }
 
-/* line 35, ../../tools/compass/sass/style.scss */
+/* line 34, ../../tools/compass/sass/style.scss */
+.pagination {
+  margin: 5px 0;
+}
+
+/* line 37, ../../tools/compass/sass/style.scss */
 .form-group {
   width: 80%;
   margin: auto;
 }
-/* line 38, ../../tools/compass/sass/style.scss */
+/* line 40, ../../tools/compass/sass/style.scss */
 .form-group label {
   margin-top: 10px;
 }
 
-/* line 43, ../../tools/compass/sass/style.scss */
+/* line 45, ../../tools/compass/sass/style.scss */
 .button-holder {
   text-align: center;
   margin-top: 20px;

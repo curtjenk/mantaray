@@ -1,39 +1,50 @@
 <div class="container-fluid follow-wrapper" ng-controller="followController">
   <div class="row nav-pad-top">
-
     <div class="col-sm-11 col-sm-offset-1">
-      <h3>People you are following</h3>
+      <h3>You are following ...</h3>
     </div>
 
     <div class="col-sm-12">
       <div class="col-sm-3 col-sm-offset-2">
-        <div id="page-controls" class="text-center">
+        <div id="page-controls-2" class="text-center">
           <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"></dir-pagination-controls>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4 col-sm-offset-2" style="padding-bottom: 5px;">
+      <div class="col-sm-8 col-sm-offset-2" style="padding-bottom: 5px;">
         <!-- <div id="recent-posts"> -->
-          <div dir-paginate="follow in following | orderBy:orderByFunction:sortReverse |itemsPerPage:5">
-            <div class="row grey-box-no-width">
-              <div class="col-sm-9">
-                <p>{{follow.username}}</p>
-              </div>
-              <div class="col-sm-2 error-text">
-                <a ng-click="followFunc(follow, 'unfollow')" role="button">
-                  <i class="fa fa-frown-o">&nbsp;Unfollow</i>
-                </a>
+        <div dir-paginate="follow in following | orderBy:orderByFunction:sortReverse |itemsPerPage:5">
+          <div class="row grey-box-no-width">
+            <div class="col-sm-9">
+              <p>{{follow.username}}</p>
+            </div>
+            <div class="col-sm-2 error-text">
+              <a ng-click="followFunc(follow, 'unfollow')" role="button">
+                <i class="fa fa-frown-o">&nbsp;Unfollow</i>
+              </a>
+            </div>
+            <div class="col-sm-1">
+              <span class="glyphicon" ng-class="{'glyphicon-plus': !follow.toggled, 'glyphicon-minus': follow.toggled}" ng-click="showPosts(follow)"></span>
+            </div>
+          </div>
+          <div class="row" ng-show="follow.toggled">
+            <div ng-repeat="follow in follow.posts">
+              <div class="post">
+                <p>{{follow.text}}</p>
+                <p>Posted:
+                  {{follow.create_date}}</p>
               </div>
             </div>
           </div>
+        </div>
         <!-- </div> -->
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-11 col-sm-offset-1">
-      <h3>People you are NOT following</h3>
+      <h3>You can also follow ...</h3>
     </div>
     <div class="col-sm-12">
       <div class="col-sm-3 col-sm-offset-2">
@@ -43,20 +54,32 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4 col-sm-offset-2" style="padding-bottom: 5px;">
+      <div class="col-sm-8 col-sm-offset-2" style="padding-bottom: 5px;">
         <!-- <div id="recent-posts"> -->
-          <div dir-paginate="nf in notFollowing | orderBy:orderByFunction:sortReverse |itemsPerPage:5">
-            <div class="row grey-box-no-width">
-              <div class="col-sm-9">
-                <p>{{nf.username}}</p>
-              </div>
-              <div class="col-sm-2 error-text">
-                <a ng-click="followFunc(nf, 'follow')" role="button">
-                  <i class="fa fa-smile-o">&nbsp;Follow</i>
-                </a>
+        <div dir-paginate="nf in notFollowing | orderBy:orderByFunction:sortReverse |itemsPerPage:5">
+          <div class="row grey-box-no-width">
+            <div class="col-sm-9">
+              <p>{{nf.username}}</p>
+            </div>
+            <div class="col-sm-2 error-text">
+              <a ng-click="followFunc(nf, 'follow')" role="button">
+                <i class="fa fa-smile-o">&nbsp;Follow</i>
+              </a>
+            </div>
+            <div class="col-sm-1">
+              <span class="glyphicon" ng-class="{'glyphicon-plus': !nf.toggled, 'glyphicon-minus': nf.toggled}" ng-click="showPosts(nf)"></span>
+            </div>
+          </div>
+          <div class="row" ng-show="nf.toggled">
+            <div ng-repeat="nfp in nf.posts">
+              <div class="post">
+                <p>{{nfp.text}}</p>
+                <p>Posted:
+                  {{nfp.create_date}}</p>
               </div>
             </div>
           </div>
+        </div>
         <!-- </div> -->
       </div>
     </div>
