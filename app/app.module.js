@@ -14,7 +14,7 @@ mantarayApp.run(function ($rootScope, $location) {
 		//other than the home page and the user is not logged in pushed them to the home page.
 		function (a) {
 			console.log('url has changed : ' + a);
-			if (a !== '/' && a !== '/login' && a !== '/register') {
+			if (a == '/post' || a == '/follow') {
         //Put some code in here to check if they are logged in!
         //If not... send them home
 				 //TESTING ONLY

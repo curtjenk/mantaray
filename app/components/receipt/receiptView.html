@@ -1,0 +1,22 @@
+<div class="container-fluid receipt-wrapper" ng-controller="receiptController">
+  <div class="row nav-pad-top">
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <h1>Thank You For Your Donation</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center" style="font-size: 20px;">
+      <p>Amount:
+        {{receiptAmount | currency}}</p>
+      <p>
+        Date:
+        {{receiptDate}}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center" style="margin-top: 15px;">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/yfgJx-ShRGI" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>

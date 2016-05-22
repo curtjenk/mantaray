@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="mantarayApp">
 
-<head>
+  <head>
     <title>Save the Mantarays</title>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/angular/angular.min.js"></script>
@@ -10,7 +10,7 @@
     <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-      <!-- <script src="node_modules/bootstrap-validator/dist/validator.min.js"></script> -->
+    <!-- <script src="node_modules/bootstrap-validator/dist/validator.min.js"></script> -->
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
     <script type="text/javascript" src="app/app.module.js"></script>
     <script type="text/javascript" src="app/app.routes.js"></script>
@@ -20,86 +20,95 @@
     <script type="text/javascript" src="app/components/register/registerController.js"></script>
     <script type="text/javascript" src="app/components/post/postController.js"></script>
     <script type="text/javascript" src="app/components/follow/followController.js"></script>
+    <script type="text/javascript" src="app/components/donate/donateController.js"></script>
+    <script type="text/javascript" src="app/components/receipt/receiptController.js"></script>
     <script type="text/javascript" src="app/shared/factory.js"></script>
     <script type="text/javascript" src="assets/libs/dirPagination.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
     <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600italic,600,700,300,100" rel="stylesheet" type="text/css">
-</head>
+  </head>
 
-<body ng-controller="homeController">
+  <body ng-controller="homeController">
     <div class="page-wrap">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul id="home-btn" class="nav navbar-nav">
-                        <li>
-                            <a href="#/">
-                                <button class="btn btn-primary">Home<span class="sr-only">(current)</span>
-                                </button>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul ng-hide="loggedIn" class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#/login">
-                                <button class="btn btn-primary">Login
-                                </button>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#/register">
-                                <button class="btn btn-primary">Register
-                                </button>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul ng-show="loggedIn" class="welcome">
-                        <li><span>Hello, {{username}}!</span></li>
-                    </ul>
-                    <ul ng-show="loggedIn" class="nav navbar-nav navbar-right">
-                      <li>
-                          <a ng-href="#/follow">
-                              <button class="btn btn-primary">Follow</button>
-                          </a>
-                      </li>
-                        <li>
-                            <a ng-href="#/post">
-                                <button class="btn btn-primary">Post</button>
-                            </a>
-                        </li>
-                        <li>
-                            <a ng-href="#/logout">
-                                <button class="btn btn-primary">Log Out</button>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
-        <div ng-view onload="viewLoaded()"></div>
-        <div id="footer">
-            <span>
-                Will you help us save the manta rays?
-            </span>
-            <i class="fa fa-credit-card"></i><a href=""><span style="color: darkblue;">&nbsp;Donate</span></a>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul id="home-btn" class="nav navbar-nav">
+              <li>
+                <a href="#/">
+                  <button class="btn btn-primary">Home<span class="sr-only">(current)</span>
+                  </button>
+                </a>
+              </li>
+            </ul>
+            <ul ng-hide="loggedIn" class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#/login">
+                  <button class="btn btn-primary">Login
+                  </button>
+                </a>
+              </li>
+              <li>
+                <a href="#/register">
+                  <button class="btn btn-primary">Register
+                  </button>
+                </a>
+              </li>
+            </ul>
+            <ul ng-show="loggedIn" class="welcome">
+              <li>
+                <span>Hello,
+                  {{username}}!</span>
+              </li>
+            </ul>
+            <ul ng-show="loggedIn" class="nav navbar-nav navbar-right">
+              <li>
+                <a ng-href="#/follow">
+                  <button class="btn btn-primary">Follow</button>
+                </a>
+              </li>
+              <li>
+                <a ng-href="#/post">
+                  <button class="btn btn-primary">Post</button>
+                </a>
+              </li>
+              <li>
+                <a ng-href="#/logout">
+                  <button class="btn btn-primary">Log Out</button>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container-fluid -->
+      </nav>
+      <div ng-view onload="viewLoaded()"></div>
+      <div id="footer">
+        <span>
+          Will you help us save the manta rays?
+        </span>
+        <i class="fa fa-credit-card"></i>
+        <a href="#/donate">
+          <span style="color: darkblue;">&nbsp;Donate</span>
+        </a>
+      </div>
     </div>
-</body>
+  </body>
 
 </html>

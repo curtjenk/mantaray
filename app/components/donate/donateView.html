@@ -1,62 +1,71 @@
 <div class="container-fluid donate-wrapper" ng-controller="donateController">
-    <div class="row nav-pad-top">
-        <div class="col-sm-6 col-sm-offset-3 text-center">
-            <h1>Make A Donation</h1>
-        </div>
+  <div class="row nav-pad-top">
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <h1>Make A Donation</h1>
+      <h4>All fields are required</h4>
     </div>
-    <div class="row">
-        <div class="error-text text-center">
-            {{errorMessage}}
-        </div>
+  </div>
+  <div class="row">
+    <div class="error-text text-center">
+      {{errorMessage}}
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 grey-box">
-            <form role="form" name="donateForm" ng-submit="donateFunc()" novalidate>
-                <div class="form-group" ng-class="{ 'has-error': registerForm.regName.$touched && registerForm.regName.$invalid }">
-                    <label>Full Name</label>
-                    <input type="text" name="regName" required multiple ng-model="regName" placeholder="John Smith" ng-minlength="5" class="form-control">
-                    <div ng-messages="registerForm.regName.$error" ng-if="registerForm.regName.$touched" role="alert">
-                        <p ng-message="required">Full Name is required.</p>
-                        <p ng-message="minlength">Full Name is too short.</p>
-                    </div>
-                </div>
-                <div class="form-group" ng-class="{ 'has-error': registerForm.regUsername.$touched && registerForm.regUsername.$invalid }">
-                    <label>Username</label>
-                    <input type="text" name="regUsername" required multiple ng-model="regUsername" placeholder="JSmith" ng-minlength="5" class="form-control">
-                    <div ng-messages="registerForm.regUsername.$error" ng-if="registerForm.regUsername.$touched" role="alert">
-                        <p ng-message="required">Username is required.</p>
-                        <p ng-message="minlength">Username is too short.</p>
-                    </div>
-                </div>
-                <div class="form-group" ng-class="{ 'has-error': registerForm.regPassword.$touched && registerForm.regPassword.$invalid }">
-                    <label>Password</label>
-                    <input type="password" name="regPassword" required multiple ng-model="regPassword" placeholder="6 character min" ng-minlength="6" class="form-control">
-                    <div ng-messages="registerForm.regPassword.$error" ng-if="registerForm.regPassword.$touched" role="alert">
-                        <p ng-message="required">Password is required.</p>
-                        <p ng-message="minlength">Password is too short.</p>
-                    </div>
-                </div>
-                <div class="form-group" ng-class="{ 'has-error': registerForm.regPassword2.$touched && registerForm.regPassword2.$invalid }">
-                    <label>Confirm Password</label>
-                    <input compare-to="regPassword" type="password" name="regPassword2" required multiple ng-model="regPassword2" placeholder="confirm password" ng-minlength="6" class="form-control">
-                    <div ng-messages="registerForm.regPassword2.$error" ng-if="registerForm.regPassword2.$touched" role="alert">
-                        <p ng-message="required">Password Confirmation is required.</p>
-                        <p ng-message="compareTo">Password Confirmation must match Password</p>
-                    </div>
-                </div>
-                <div class="form-group" ng-class="{ 'has-error': registerForm.regEmail.$touched && registerForm.regEmail.$invalid }">
-                    <label>Email</label>
-                    <input type="email" name="regEmail" required multiple ng-model="regEmail" placeholder="example@example.com" class="form-control">
-                    <div ng-messages="registerForm.regEmail.$error" ng-if="registerForm.regEmail.$touched" role="alert">
-                        <p ng-message="required">Email is required.</p>
-                        <p ng-message="email">This needs to be a valid email</p>
-                    </div>
-                </div>
-                <div class="button-holder">
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </div>
-            </form>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 grey-box">
+      <form role="form" name="donateForm" ng-submit="donateFunc()" novalidate>
+        <div class="form-group" id="amount-group" ng-class="{ 'has-error': donateForm.amout.$touched && donateForm.amount.$invalid }">
+          <input type="radio" ng-model="donateAmt" value="100000"/><span>$100,000</span>
+          <input type="radio" ng-model="donateAmt" value="25000" /><span>$25,000</span>
+          <input type="radio" ng-model="donateAmt" value="5000" /><span>$5,000</span>
+          <input type="radio" ng-model="donateAmt" value="0" /><span>Enter an amount</span>
+          <i class="fa fa-dollar"></i><input type="number" ng-model="donateAmtOther" min="1" step="any"  class="currency" value="" />
+
         </div>
+        <div class="form-group" ng-class="{ 'has-error': donateForm.name.$touched && donateForm.name.$invalid }">
+          <label>Full Name</label>
+          <input type="text" name="name" required multiple ng-model="name" placeholder="Warren Buffet" ng-minlength="5" class="form-control">
+          <div ng-messages="donateForm.name.$error" ng-if="donateForm.name.$touched" role="alert">
+            <p ng-message="required">Name is required.</p>
+            <p ng-message="minlength">Name is too short.</p>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': donateForm.address.$touched && donateForm.address.$invalid }">
+          <label>Address</label>
+          <input type="text" name="address" required multiple ng-model="address" placeholder="10 Ocean View" ng-minlength="5" class="form-control">
+          <div ng-messages="donateForm.address.$error" ng-if="donateForm.address.$touched" role="alert">
+            <p ng-message="required">Address is required.</p>
+            <p ng-message="minlength">Address is too short.</p>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': dateForm.zip.$touched && dateForm.zip.$invalid }">
+          <label>Zip</label>
+          <input type="text" pattern="[0-9]*" name="zip" required multiple ng-change="zipChange()" ng-model="zip" placeholder="90210" ng-minlength="5" class="form-control">
+          <div ng-messages="dateForm.zip.$error" ng-if="dateForm.zip.$touched" role="alert">
+            <p ng-message="required">Zip is required.</p>
+            <p ng-message="minlength">Zip is too short.</p>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': dateForm.city.$touched && dateForm.city.$invalid }">
+          <label>City</label>
+          <input type="text" name="city" required multiple ng-model="city" placeholder="Beverly Hills" ng-minlength="3" class="form-control">
+          <div ng-messages="dateForm.city.$error" ng-if="dateForm.city.$touched" role="alert">
+            <p ng-message="required">City is required.</p>
+            <p ng-message="minlength">City is too short.</p>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': dateForm.state.$touched && dateForm.state.$invalid }">
+          <label>State</label>
+          <input type="text" name="state" required multiple ng-model="state" placeholder="CA" ng-minlength="2" class="form-control">
+          <div ng-messages="dateForm.state.$error" ng-if="dateForm.state.$touched" role="alert">
+            <p ng-message="required">State is required.</p>
+            <p ng-message="minlenth">Enter state code</p>
+          </div>
+        </div>
+        <div class="button-holder">
+          <button type="submit" class="btn btn-primary" ng-disabled="donateForm.$invalid">Donate</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 </div>

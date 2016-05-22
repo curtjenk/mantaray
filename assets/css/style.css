@@ -109,6 +109,11 @@ body {
   margin-right: 10px;
 }
 
+/* line 1, ../../tools/compass/sass/_register.scss */
+.register-wrapper {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 /* line 1, ../../tools/compass/sass/_post.scss */
 .post-wrapper {
   font-family: 'Josefin Sans', sans-serif;
@@ -153,50 +158,63 @@ body {
   margin-left: 65px;
 }
 
-/* line 14, ../../tools/compass/sass/style.scss */
+/* line 2, ../../tools/compass/sass/_donate.scss */
+.donate-wrapper form {
+  padding-top: 5px;
+}
+/* line 6, ../../tools/compass/sass/_donate.scss */
+.donate-wrapper #amount-group input {
+  margin-right: 3px;
+}
+/* line 9, ../../tools/compass/sass/_donate.scss */
+.donate-wrapper #amount-group span {
+  margin-right: 5px;
+}
+
+/* line 15, ../../tools/compass/sass/style.scss */
 body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-/* line 18, ../../tools/compass/sass/style.scss */
+/* line 19, ../../tools/compass/sass/style.scss */
 .grey-box {
   margin-top: 10px;
   background-color: #E6E6E6;
   width: 50%;
 }
 
-/* line 23, ../../tools/compass/sass/style.scss */
+/* line 24, ../../tools/compass/sass/style.scss */
 .nav-pad-top {
   padding-top: 55px;
 }
 
-/* line 27, ../../tools/compass/sass/style.scss */
+/* line 28, ../../tools/compass/sass/style.scss */
 #home-btn {
   position: relative;
   z-index: 5;
 }
 
-/* line 31, ../../tools/compass/sass/style.scss */
+/* line 32, ../../tools/compass/sass/style.scss */
 .error-text {
   color: red;
 }
 
-/* line 34, ../../tools/compass/sass/style.scss */
+/* line 35, ../../tools/compass/sass/style.scss */
 .pagination {
   margin: 5px 0;
 }
 
-/* line 37, ../../tools/compass/sass/style.scss */
+/* line 38, ../../tools/compass/sass/style.scss */
 .form-group {
   width: 80%;
   margin: auto;
 }
-/* line 40, ../../tools/compass/sass/style.scss */
+/* line 41, ../../tools/compass/sass/style.scss */
 .form-group label {
   margin-top: 10px;
 }
 
-/* line 45, ../../tools/compass/sass/style.scss */
+/* line 46, ../../tools/compass/sass/style.scss */
 .button-holder {
   text-align: center;
   margin-top: 20px;

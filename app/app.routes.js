@@ -30,6 +30,16 @@ mantarayApp.config(function($routeProvider) {
           return 'app/components/follow/followView.html';
         }
     });
+    $routeProvider.when('/donate', {
+        templateUrl: function($routeParams) {
+          return 'app/components/donate/donateView.html';
+        }
+    });
+    $routeProvider.when('/receipt', {
+        templateUrl: function($routeParams) {
+          return 'app/components/receipt/receiptView.html';
+        }
+    });
     $routeProvider.otherwise({
         redirectTo: '/'
     });

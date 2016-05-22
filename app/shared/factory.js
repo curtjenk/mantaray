@@ -2,6 +2,32 @@ function upFirstChar(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function is_int(value) {
+	if ((parseFloat(value) == parseInt(value)) && !isNaN(value)) {
+		return true;
+	}
+}
+
+mantarayApp.factory('zipLookup', function ($http) {
+	return {
+		get: function (zip, successFunc, errorFunc) {
+			var zipApiUrl = encodeURI("http://api.zippopotam.us/us/" + zip);
+			$http.get(zipApiUrl).then(
+				function (resp) {
+					console.log(resp);
+					var city = resp.data.places[0]["place name"];
+					var state = resp.data.places[0].state;
+					successFunc({
+						city: city,
+						state: state
+					});
+				},
+				function (err) {
+					errorFunc(err);
+				});
+		}
+	};
+});
 //factory for managing local storage
 //Note to self:  ALL FUCTIONS SHOULD RETURN A PROMISE
 mantarayApp.factory('dbAjax', function ($http) {
