@@ -1,6 +1,7 @@
 mantarayApp.controller("donateController", function ($rootScope, $scope, $http, $location, $timeout, zipLookup) {
 	$scope.donateAmt = 100000;
 
+	//respond to the ng-change event for zip code
 	$scope.zipChange = function () {
 		if ($scope.zip.length === 5 && is_int($scope.zip)) {
 			var ok = function (resp) {
@@ -23,9 +24,9 @@ mantarayApp.controller("donateController", function ($rootScope, $scope, $http, 
 		    return;
 		}
 
-		console.log($scope.donateAmt);
-		console.log(typeof $scope.donateAmt);
-		console.log($scope.donateAmtOther);
+		// console.log($scope.donateAmt);
+		// console.log(typeof $scope.donateAmt);
+		// console.log($scope.donateAmtOther);
 		var total = 0;
 		if (Number($scope.donateAmt) === 0) {
 			total = Number($scope.donateAmtOther);

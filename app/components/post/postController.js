@@ -7,7 +7,7 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
     readAllPosts();
 
     function readAllPosts() {
-        console.log('getting all the posts and their vote total');
+        // console.log('getting all the posts and their vote total');
         //get all the post messages
         //dbAjax.readPostAndVote().then(
         dbAjax.readPostView($rootScope.username).then(
@@ -34,7 +34,7 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
             returnAll: true
         }).then(
             function(success) {
-                console.log(success);
+                // console.log(success);
                 $scope.postText = '';
                 // clearing the input field invalidates the form and shows an error.  these methods prevent showing errors when resetting the inputs
                 $scope.postForm.$setPristine();
@@ -58,7 +58,7 @@ mantarayApp.controller("postController", function($rootScope, $scope, $http, dbA
         dbAjax.createVote({
             username: $rootScope.username, //the person loggedIn not who posted
             postId: post.id,
-            direction: direction // 'up' vote
+            direction: direction
         }).then(
             function(success) {
                 // console.log(success);

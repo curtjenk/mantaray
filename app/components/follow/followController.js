@@ -4,7 +4,7 @@ mantarayApp.controller("followController", function ($rootScope, $scope, $http, 
 	var getFollowingData = function () {
 		dbAjax.readFollowing($rootScope.username).then(
 			function (found) {
-				console.log(found);
+				// console.log(found);
 				$scope.following = found.data.dbRead.rows_following;
 				$scope.notFollowing = found.data.dbRead.rows_not_following;
 			},
@@ -57,8 +57,8 @@ mantarayApp.controller("followController", function ($rootScope, $scope, $http, 
 	getFollowingData();
 
 	$scope.followFunc = function (who, action) {
-    console.log(who);
-    console.log(action);
+    // console.log(who);
+    // console.log(action);
 		if (action == 'follow') {
       follow(who);
 		} else {
